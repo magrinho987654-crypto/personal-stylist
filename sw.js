@@ -1,4 +1,4 @@
-const CACHE_NAME = "personal-stylist-v1";
+const CACHE_NAME = "personal-stylist-v2";
 
 const FILES_TO_CACHE = [
   "./",
