@@ -2686,373 +2686,445 @@
        VERSÃO CORRIGIDA
     ===================================================== */
 
-    async function pedirLook() {
+    let iframeAPI = null;
+let timeoutAPI = null;
+let resolverAPI = null;
 
-      if (analisandoLook) {
-        return;
+window.addEventListener(
+  "message",
+  function(event) {
+
+    if (
+      !event.data ||
+      event.data.tipo !==
+        "PERSONAL_STYLIST_RESULTADO"
+    ) {
+
+      return;
+
+    }
+
+    console.log(
+      "RESPOSTA RECEBIDA DO APPS SCRIPT:",
+      event.data.dados
+    );
+
+    if (timeoutAPI) {
+
+      clearTimeout(
+        timeoutAPI
+      );
+
+      timeoutAPI = null;
+
+    }
+
+    if (resolverAPI) {
+
+      const resolver =
+        resolverAPI;
+
+      resolverAPI = null;
+
+      resolver(
+        event.data.dados
+      );
+
+    }
+
+  }
+);
+
+
+function enviarParaAPI(dados) {
+
+  return new Promise(
+    function(resolve, reject) {
+
+      resolverAPI =
+        resolve;
+
+      if (iframeAPI) {
+
+        iframeAPI.remove();
+
+        iframeAPI = null;
+
       }
 
-
-      if (!guardaRoupa.length) {
-
-        mostrarResultadoErro(
-          "Seu guarda-roupa ainda está vazio. Adicione algumas peças antes de pedir um look."
+      iframeAPI =
+        document.createElement(
+          "iframe"
         );
 
-        return;
+      iframeAPI.style.display =
+        "none";
 
-      }
+      iframeAPI.name =
+        "personalStylistAPIFrame";
 
+      document.body.appendChild(
+        iframeAPI
+      );
 
-      if (
-        !API_URL ||
-        API_URL.includes("COLE_AQUI")
-      ) {
-
-        mostrarResultadoErro(
-          "A API ainda não foi configurada."
+      const form =
+        document.createElement(
+          "form"
         );
 
-        return;
+      form.method =
+        "POST";
 
-      }
+      form.action =
+        API_URL;
 
+      form.target =
+        iframeAPI.name;
 
-      const observacoes =
-        document
-          .getElementById(
-            "stylistObservation"
-          )
-          .value
-          .trim();
+      form.style.display =
+        "none";
 
-
-      const preferencias = {
-
-        estilo:
-          document
-            .getElementById(
-              "styleSelect"
-            )
-            .value,
-
-        ocasiao:
-          document
-            .getElementById(
-              "occasionSelect"
-            )
-            .value,
-
-        clima:
-          document
-            .getElementById(
-              "weatherSelect"
-            )
-            .value,
-
-        observacoes:
-          observacoes
-
-      };
-
-
-      const dados = {
-
-        guardaRoupa:
-          prepararGuardaRoupa(),
-
-        estilo:
-          preferencias.estilo,
-
-        ocasiao:
-          preferencias.ocasiao,
-
-        clima:
-          preferencias.clima,
-
-        observacoes:
-          preferencias.observacoes,
-
-        preferencias:
-          preferencias
-
-      };
-
-
-      analisandoLook = true;
-
-
-      const button =
-        document.getElementById(
-          "stylistButton"
+      const input =
+        document.createElement(
+          "input"
         );
 
+      input.type =
+        "hidden";
 
-      const result =
-        document.getElementById(
-          "lookResult"
+      input.name =
+        "payload";
+
+      input.value =
+        JSON.stringify(
+          dados
         );
 
+      form.appendChild(
+        input
+      );
 
-      button.disabled = true;
+      document.body.appendChild(
+        form
+      );
 
-      button.textContent =
-        "✨ Analisando seu guarda-roupa...";
+      console.log(
+        "Enviando dados para Apps Script..."
+      );
 
-
-      result.innerHTML = `
-
-        <div class="result-card">
-
-          <div class="result-loading">
-
-            <div class="loading-spinner"></div>
-
-            <strong>
-              Seu Stylist está pensando...
-            </strong>
-
-            <div
-              style="
-                margin-top:7px;
-                font-size:13px;
-              "
-            >
-              Analisando suas peças e suas preferências.
-            </div>
-
-          </div>
-
-        </div>
-
-      `;
-
-
-      const controller =
-        new AbortController();
-
-
-      const timeout =
+      timeoutAPI =
         setTimeout(
           function() {
 
-            controller.abort();
+            resolverAPI =
+              null;
+
+            if (iframeAPI) {
+
+              iframeAPI.remove();
+
+              iframeAPI =
+                null;
+
+            }
+
+            reject(
+              new Error(
+                "A API demorou mais de 90 segundos para responder."
+              )
+            );
 
           },
           90000
         );
 
-
       try {
 
-        console.log(
-          "Enviando dados para:",
-          API_URL
-        );
+        form.submit();
 
-
-        console.log(
-          "Dados enviados:",
-          dados
-        );
-
-
-        const resposta =
-          await fetch(
-            API_URL,
-            {
-
-              method:
-                "POST",
-
-              headers:
-                {
-                  "Content-Type":
-                    "text/plain;charset=utf-8"
-                },
-
-              redirect:
-                "follow",
-
-              signal:
-                controller.signal,
-
-              body:
-                JSON.stringify(
-                  dados
-                )
-
-            }
-          );
-
-
-        console.log(
-          "Status da API:",
-          resposta.status
-        );
-
-
-        const textoResposta =
-          await resposta.text();
-
-
-        console.log(
-          "Resposta bruta da API:",
-          textoResposta
-        );
-
-
-        if (!resposta.ok) {
-
-          throw new Error(
-            "HTTP " +
-            resposta.status +
-            ": " +
-            textoResposta
-          );
-
-        }
-
-
-        let resultado;
-
-
-        try {
-
-          resultado =
-            JSON.parse(
-              textoResposta
-            );
-
-        } catch (erroJSON) {
-
-          console.error(
-            "Erro ao interpretar JSON:",
-            erroJSON
-          );
-
-          throw new Error(
-            "A API respondeu um conteúdo inválido."
-          );
-
-        }
-
-
-        console.log(
-          "Resultado interpretado:",
-          resultado
-        );
-
-
-        if (!resultado) {
-
-          throw new Error(
-            "A API não retornou nenhum resultado."
-          );
-
-        }
-
-
-        if (
-          resultado.sucesso === false
-        ) {
-
-          mostrarResultadoErro(
-            resultado.mensagem ||
-            resultado.erro ||
-            "O Stylist não conseguiu analisar o guarda-roupa."
-          );
-
-          return;
-
-        }
-
-
-        mostrarResultadoLook(
-          resultado
-        );
-
-
-      } catch (error) {
-
-        console.error(
-          "ERRO COMPLETO DO STYLIST:",
-          error
-        );
-
-
-        let mensagem =
-          error &&
-          error.message
-            ? error.message
-            : String(error);
-
-
-        if (
-          error &&
-          error.name === "AbortError"
-        ) {
-
-          mensagem =
-            "A análise demorou mais de 90 segundos. O Gemini pode estar temporariamente sobrecarregado.";
-
-        }
-
-        else if (
-          mensagem.includes(
-            "Failed to fetch"
-          ) ||
-          mensagem.includes(
-            "NetworkError"
-          ) ||
-          mensagem.includes(
-            "CORS"
-          )
-        ) {
-
-          mensagem =
-            "O navegador não conseguiu acessar o Google Apps Script. Verifique se o Web App está publicado como 'Qualquer pessoa' e se a URL termina em /exec.";
-
-        }
-
-        else if (
-          mensagem.includes("503") ||
-          mensagem.includes("502") ||
-          mensagem.includes("504")
-        ) {
-
-          mensagem =
-            "O Gemini ou o servidor está temporariamente indisponível. Aguarde alguns segundos e tente novamente.";
-
-        }
-
-
-        mostrarResultadoErro(
-          mensagem
-        );
-
-
-      } finally {
+      } catch (erro) {
 
         clearTimeout(
-          timeout
+          timeoutAPI
         );
 
+        timeoutAPI =
+          null;
 
-        analisandoLook =
-          false;
+        resolverAPI =
+          null;
 
-
-        button.disabled =
-          false;
-
-
-        button.textContent =
-          "✨ Criar meu look";
+        reject(
+          erro
+        );
 
       }
 
+      setTimeout(
+        function() {
+
+          form.remove();
+
+        },
+        1000
+      );
+
     }
+  );
+
+}
+
+    async function pedirLook() {
+
+  if (analisandoLook) {
+    return;
+  }
+
+  if (
+    !guardaRoupa ||
+    !guardaRoupa.length
+  ) {
+
+    mostrarResultadoErro(
+      "Seu guarda-roupa ainda está vazio. Adicione algumas peças antes de pedir um look."
+    );
+
+    return;
+  }
+
+  if (
+    !API_URL ||
+    API_URL.includes("COLE_AQUI")
+  ) {
+
+    mostrarResultadoErro(
+      "A API ainda não foi configurada."
+    );
+
+    return;
+  }
+
+  const observacoesElement =
+    document.getElementById(
+      "stylistObservation"
+    );
+
+  const estiloElement =
+    document.getElementById(
+      "styleSelect"
+    );
+
+  const ocasiaoElement =
+    document.getElementById(
+      "occasionSelect"
+    );
+
+  const climaElement =
+    document.getElementById(
+      "weatherSelect"
+    );
+
+  const observacoes =
+    observacoesElement
+      ? observacoesElement.value.trim()
+      : "";
+
+  const estilo =
+    estiloElement
+      ? estiloElement.value
+      : "Casual";
+
+  const ocasiao =
+    ocasiaoElement
+      ? ocasiaoElement.value
+      : "Dia a dia";
+
+  const clima =
+    climaElement
+      ? climaElement.value
+      : "Ameno";
+
+  const preferencias = {
+
+    estilo:
+      estilo,
+
+    ocasiao:
+      ocasiao,
+
+    clima:
+      clima,
+
+    observacoes:
+      observacoes
+
+  };
+
+  const dados = {
+
+    guardaRoupa:
+      prepararGuardaRoupa(),
+
+    estilo:
+      estilo,
+
+    ocasiao:
+      ocasiao,
+
+    clima:
+      clima,
+
+    observacoes:
+      observacoes,
+
+    preferencias:
+      preferencias
+
+  };
+
+  analisandoLook =
+    true;
+
+  const button =
+    document.getElementById(
+      "stylistButton"
+    );
+
+  const result =
+    document.getElementById(
+      "lookResult"
+    );
+
+  if (button) {
+
+    button.disabled =
+      true;
+
+    button.textContent =
+      "✨ Analisando seu guarda-roupa...";
+
+  }
+
+  if (result) {
+
+    result.innerHTML = `
+
+      <div class="result-card">
+
+        <div class="result-loading">
+
+          <div class="loading-spinner"></div>
+
+          <strong>
+            Seu Stylist está pensando...
+          </strong>
+
+          <div
+            style="
+              margin-top:7px;
+              font-size:13px;
+              opacity:.75;
+            "
+          >
+            Analisando suas peças e suas preferências.
+          </div>
+
+        </div>
+
+      </div>
+
+    `;
+
+  }
+
+  try {
+
+    console.log(
+      "Dados enviados:",
+      dados
+    );
+
+    console.log(
+      "Enviando para:",
+      API_URL
+    );
+
+    const resultado =
+      await enviarParaAPI(
+        dados
+      );
+
+    console.log(
+      "Resultado recebido:",
+      resultado
+    );
+
+    if (!resultado) {
+
+      throw new Error(
+        "A API não retornou nenhum resultado."
+      );
+
+    }
+
+    if (
+      resultado.sucesso === false
+    ) {
+
+      mostrarResultadoErro(
+
+        resultado.erro ||
+        resultado.mensagem ||
+        "O Stylist não conseguiu analisar o guarda-roupa."
+
+      );
+
+      return;
+
+    }
+
+    resultadoStylistAtual =
+      resultado;
+
+    mostrarResultadoLook(
+      resultado
+    );
+
+  } catch (error) {
+
+    console.error(
+      "ERRO COMPLETO DO STYLIST:",
+      error
+    );
+
+    let mensagem =
+      error &&
+      error.message
+        ? error.message
+        : String(error);
+
+    mostrarResultadoErro(
+      mensagem
+    );
+
+  } finally {
+
+    analisandoLook =
+      false;
+
+    if (button) {
+
+      button.disabled =
+        false;
+
+      button.textContent =
+        "✨ Criar meu look";
+
+    }
+
+  }
+
+}
 
 
     /* =====================================================
