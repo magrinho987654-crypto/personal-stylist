@@ -2,46 +2,94 @@
 <html lang="pt-BR">
 <head>
 
-  <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#111111">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
-<meta name="apple-mobile-web-app-title" content="Personal Stylist">
-  
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  >
+
+  <meta name="theme-color" content="#111111">
+
+  <meta
+    name="mobile-web-app-capable"
+    content="yes"
+  >
+
+  <meta
+    name="apple-mobile-web-app-capable"
+    content="yes"
+  >
+
+  <meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="black"
+  >
+
+  <meta
+    name="apple-mobile-web-app-title"
+    content="Personal Stylist"
+  >
+
+  <link rel="manifest" href="./manifest.json">
 
   <title>Personal Stylist</title>
 
+
   <style>
+
     :root {
+
       --bg: #f5f5f7;
       --card: #ffffff;
       --text: #171717;
       --muted: #737373;
       --border: #e5e5e5;
+
       --primary: #111111;
-      --primary-light: #262626;
       --accent: #8b5cf6;
+
       --danger: #dc2626;
       --success: #16a34a;
+
       --radius: 20px;
-      --nav-height: 76px;
+
+      --nav-height: 82px;
+
     }
+
 
     * {
+
       box-sizing: border-box;
+
       -webkit-tap-highlight-color: transparent;
+
     }
 
-    html,
+
+    html {
+
+      font-size: 16px;
+
+      scroll-behavior: smooth;
+
+    }
+
+
     body {
+
       margin: 0;
+
       padding: 0;
-      min-height: 100%;
+
+      min-height: 100vh;
+      min-height: 100dvh;
+
       background: var(--bg);
+
       color: var(--text);
+
       font-family:
         Inter,
         -apple-system,
@@ -50,2420 +98,3596 @@
         Roboto,
         Arial,
         sans-serif;
+
+      overflow-x: hidden;
+
     }
 
-    body {
-      overflow-x: hidden;
-    }
 
     button,
     input,
     select,
     textarea {
+
       font: inherit;
+
     }
+
 
     button {
+
       cursor: pointer;
+
     }
 
-    /* =========================
+
+    /* =====================================================
        LOGIN
-    ========================= */
+    ===================================================== */
 
     #loginScreen {
+
       min-height: 100vh;
       min-height: 100dvh;
+
       display: flex;
+
       align-items: center;
+
       justify-content: center;
-      padding: 24px;
+
+      padding:
+        24px
+        20px
+        calc(24px + env(safe-area-inset-bottom));
+
       background:
-        radial-gradient(circle at top right, rgba(139, 92, 246, .16), transparent 35%),
-        radial-gradient(circle at bottom left, rgba(0, 0, 0, .08), transparent 35%),
+        radial-gradient(
+          circle at top right,
+          rgba(139,92,246,.16),
+          transparent 35%
+        ),
+        radial-gradient(
+          circle at bottom left,
+          rgba(0,0,0,.08),
+          transparent 35%
+        ),
         #f5f5f7;
+
     }
+
 
     .login-card {
+
       width: 100%;
-      max-width: 420px;
+
+      max-width: 440px;
+
       background: white;
+
       border: 1px solid rgba(0,0,0,.06);
+
       border-radius: 28px;
-      padding: 30px 24px;
-      box-shadow: 0 20px 60px rgba(0,0,0,.10);
+
+      padding: 30px 22px;
+
+      box-shadow:
+        0 20px 60px rgba(0,0,0,.10);
+
     }
+
 
     .login-logo {
-      width: 64px;
-      height: 64px;
+
+      width: 68px;
+      height: 68px;
+
       margin: 0 auto 18px;
-      border-radius: 20px;
+
+      border-radius: 21px;
+
       background: #111;
+
       color: white;
+
       display: flex;
+
       align-items: center;
+
       justify-content: center;
-      font-size: 28px;
-      font-weight: 800;
+
+      font-size: 29px;
+
+      font-weight: 900;
+
     }
+
 
     .login-card h1 {
+
       text-align: center;
+
       margin: 0;
-      font-size: 28px;
-      letter-spacing: -.7px;
+
+      font-size: 30px;
+
+      letter-spacing: -.8px;
+
     }
+
 
     .login-subtitle {
+
       text-align: center;
+
       color: var(--muted);
-      margin: 8px 0 28px;
-      font-size: 15px;
-      line-height: 1.5;
+
+      margin: 9px 0 30px;
+
+      font-size: 16px;
+
+      line-height: 1.55;
+
     }
 
+
     .login-field {
-      margin-bottom: 16px;
+
+      margin-bottom: 18px;
+
     }
+
 
     .login-field label,
     .field label {
+
       display: block;
-      font-size: 14px;
-      font-weight: 700;
-      margin-bottom: 8px;
+
+      font-size: 16px;
+
+      font-weight: 800;
+
+      margin-bottom: 9px;
+
     }
+
 
     .input,
     .select,
     .textarea {
+
       width: 100%;
+
       border: 1px solid var(--border);
+
       background: #fafafa;
+
       color: var(--text);
-      border-radius: 15px;
-      min-height: 52px;
-      padding: 13px 15px;
+
+      border-radius: 16px;
+
+      min-height: 58px;
+
+      padding: 15px 16px;
+
       outline: none;
+
       transition: .2s;
-      font-size: 16px;
+
+      font-size: 17px;
+
     }
 
+
     .textarea {
-      min-height: 120px;
+
+      min-height: 145px;
+
       resize: vertical;
-      line-height: 1.5;
+
+      line-height: 1.55;
+
     }
+
 
     .input:focus,
     .select:focus,
     .textarea:focus {
+
       background: white;
+
       border-color: #111;
-      box-shadow: 0 0 0 3px rgba(0,0,0,.06);
+
+      box-shadow:
+        0 0 0 3px rgba(0,0,0,.06);
+
     }
+
 
     .btn {
+
       border: 0;
-      border-radius: 15px;
-      min-height: 52px;
-      padding: 13px 18px;
+
+      border-radius: 16px;
+
+      min-height: 58px;
+
+      padding: 14px 18px;
+
       font-weight: 800;
-      font-size: 15px;
-      transition: transform .15s, opacity .15s;
+
+      font-size: 17px;
+
+      transition:
+        transform .15s,
+        opacity .15s;
+
     }
+
 
     .btn:active {
+
       transform: scale(.98);
+
     }
+
 
     .btn-primary {
+
       width: 100%;
+
       background: var(--primary);
+
       color: white;
+
     }
+
 
     .btn-secondary {
+
       background: #eeeeee;
+
       color: #111;
+
     }
+
 
     .btn-danger {
+
       background: #fee2e2;
+
       color: #991b1b;
+
     }
+
 
     .login-error {
+
       display: none;
-      margin-top: 14px;
-      padding: 12px;
-      border-radius: 12px;
+
+      margin-top: 15px;
+
+      padding: 13px;
+
+      border-radius: 13px;
+
       background: #fee2e2;
+
       color: #991b1b;
-      font-size: 14px;
+
+      font-size: 15px;
+
       text-align: center;
+
     }
 
-    /* =========================
+
+    /* =====================================================
        APP
-    ========================= */
+    ===================================================== */
 
     #app {
+
       display: none;
+
       min-height: 100vh;
       min-height: 100dvh;
-      padding-bottom: calc(var(--nav-height) + 20px);
+
+      padding-bottom:
+        calc(
+          var(--nav-height)
+          + 30px
+          + env(safe-area-inset-bottom)
+        );
+
     }
+
 
     .topbar {
+
       position: sticky;
+
       top: 0;
+
       z-index: 30;
-      background: rgba(245,245,247,.94);
+
+      background:
+        rgba(245,245,247,.95);
+
       backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(0,0,0,.05);
+
+      border-bottom:
+        1px solid rgba(0,0,0,.05);
+
     }
+
 
     .topbar-inner {
-      max-width: 700px;
+
+      width: 100%;
+
+      max-width: 720px;
+
       margin: 0 auto;
-      min-height: 70px;
+
+      min-height: 76px;
+
       padding: 14px 18px;
+
       display: flex;
+
       align-items: center;
+
       justify-content: space-between;
+
       gap: 12px;
+
     }
+
 
     .brand {
+
       display: flex;
+
       align-items: center;
+
       gap: 11px;
+
       min-width: 0;
+
     }
+
 
     .brand-icon {
+
       flex: 0 0 auto;
-      width: 42px;
-      height: 42px;
-      border-radius: 13px;
+
+      width: 45px;
+      height: 45px;
+
+      border-radius: 14px;
+
       background: #111;
+
       color: white;
+
       display: flex;
+
       align-items: center;
+
       justify-content: center;
+
       font-weight: 900;
-      font-size: 17px;
+
+      font-size: 18px;
+
     }
 
-    .brand-text {
-      min-width: 0;
-    }
 
     .brand-title {
-      font-size: 17px;
+
+      font-size: 18px;
+
       font-weight: 900;
+
       line-height: 1.1;
+
     }
+
 
     .brand-subtitle {
-      margin-top: 3px;
+
+      margin-top: 4px;
+
       color: var(--muted);
-      font-size: 12px;
+
+      font-size: 13px;
+
       white-space: nowrap;
+
     }
+
 
     .profile-mini {
-      width: 42px;
-      height: 42px;
+
+      width: 44px;
+      height: 44px;
+
       border-radius: 50%;
+
       background: #e5e5e5;
+
       display: flex;
+
       align-items: center;
+
       justify-content: center;
+
       font-weight: 900;
+
       flex: 0 0 auto;
+
+      font-size: 17px;
+
     }
 
-    /* =========================
+
+    /* =====================================================
        MAIN
-    ========================= */
+    ===================================================== */
 
     .main {
+
       width: 100%;
-      max-width: 700px;
+
+      max-width: 720px;
+
       margin: 0 auto;
-      padding: 22px 16px 30px;
+
+      padding:
+        25px
+        16px
+        30px;
+
     }
+
 
     .page {
+
       display: none;
-      animation: pageIn .18s ease;
+
+      animation:
+        pageIn .18s ease;
+
     }
+
 
     .page.active {
+
       display: block;
+
     }
 
+
     @keyframes pageIn {
+
       from {
+
         opacity: 0;
-        transform: translateY(5px);
+
+        transform:
+          translateY(5px);
+
       }
 
       to {
+
         opacity: 1;
-        transform: translateY(0);
+
+        transform:
+          translateY(0);
+
       }
+
     }
+
 
     .page-header {
-      margin-bottom: 22px;
+
+      margin-bottom: 24px;
+
     }
+
 
     .page-header h1 {
+
       margin: 0;
-      font-size: 29px;
+
+      font-size: 32px;
+
       line-height: 1.1;
-      letter-spacing: -.8px;
+
+      letter-spacing: -.9px;
+
     }
+
 
     .page-header p {
-      margin: 8px 0 0;
+
+      margin: 9px 0 0;
+
       color: var(--muted);
-      font-size: 15px;
-      line-height: 1.5;
+
+      font-size: 16px;
+
+      line-height: 1.55;
+
     }
 
-    /* =========================
+
+    /* =====================================================
        DASHBOARD
-    ========================= */
+    ===================================================== */
 
     .welcome-card {
-      border-radius: 24px;
-      padding: 24px;
+
+      border-radius: 25px;
+
+      padding: 25px;
+
       background: #111;
+
       color: white;
-      margin-bottom: 16px;
+
+      margin-bottom: 17px;
+
       position: relative;
+
       overflow: hidden;
+
     }
 
-    .welcome-card::after {
-      content: "";
-      position: absolute;
-      width: 180px;
-      height: 180px;
-      right: -70px;
-      top: -70px;
-      border-radius: 50%;
-      background: rgba(255,255,255,.08);
-    }
 
     .welcome-card small {
+
       opacity: .7;
+
       font-size: 13px;
+
+      font-weight: 800;
+
+      letter-spacing: .4px;
+
     }
+
 
     .welcome-card h2 {
-      margin: 7px 0 7px;
-      font-size: 26px;
+
+      margin: 8px 0 8px;
+
+      font-size: 28px;
+
       line-height: 1.15;
+
     }
+
 
     .welcome-card p {
+
       margin: 0;
-      color: rgba(255,255,255,.72);
-      font-size: 14px;
-      line-height: 1.5;
-      max-width: 90%;
+
+      color: rgba(255,255,255,.74);
+
+      font-size: 15px;
+
+      line-height: 1.55;
+
+      max-width: 92%;
+
     }
+
 
     .stats {
+
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+
+      grid-template-columns:
+        repeat(3,1fr);
+
       gap: 10px;
-      margin-bottom: 22px;
+
+      margin-bottom: 24px;
+
     }
+
 
     .stat-card {
+
       background: white;
+
       border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 16px 12px;
+
+      border-radius: 19px;
+
+      padding: 17px 10px;
+
       text-align: center;
+
     }
+
 
     .stat-number {
-      font-size: 25px;
+
+      font-size: 27px;
+
       font-weight: 900;
+
       line-height: 1;
+
     }
+
 
     .stat-label {
+
       color: var(--muted);
-      font-size: 12px;
-      margin-top: 7px;
+
+      font-size: 13px;
+
+      margin-top: 8px;
+
     }
+
 
     .quick-title {
-      font-size: 17px;
+
+      font-size: 19px;
+
       font-weight: 900;
-      margin: 0 0 12px;
+
+      margin: 0 0 13px;
+
     }
+
 
     .quick-actions {
+
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 11px;
+
     }
+
 
     .quick-action {
-      min-height: 100px;
+
+      min-height: 120px;
+
       border: 1px solid var(--border);
-      border-radius: 18px;
+
+      border-radius: 20px;
+
       background: white;
-      padding: 17px;
+
+      padding: 18px;
+
       text-align: left;
+
       display: flex;
+
       flex-direction: column;
+
       justify-content: space-between;
+
     }
+
 
     .quick-action-icon {
-      font-size: 25px;
+
+      font-size: 29px;
+
     }
+
 
     .quick-action strong {
-      font-size: 14px;
+
+      display: block;
+
+      font-size: 16px;
+
     }
+
 
     .quick-action span {
+
+      display: block;
+
       color: var(--muted);
-      font-size: 12px;
-      margin-top: 3px;
+
+      font-size: 13px;
+
+      margin-top: 4px;
+
+      line-height: 1.35;
+
     }
 
-    /* =========================
-       SECTION / CARDS
-    ========================= */
+
+    /* =====================================================
+       SECTION
+    ===================================================== */
 
     .section-card {
+
       background: white;
+
       border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 18px;
-      margin-bottom: 16px;
+
+      border-radius: 23px;
+
+      padding: 19px;
+
+      margin-bottom: 17px;
+
     }
+
 
     .section-title {
-      font-size: 18px;
+
+      font-size: 19px;
+
       font-weight: 900;
-      margin: 0 0 14px;
+
+      margin: 0 0 15px;
+
     }
+
 
     .section-subtitle {
+
       color: var(--muted);
-      font-size: 13px;
-      line-height: 1.5;
-      margin: -7px 0 16px;
+
+      font-size: 14px;
+
+      line-height: 1.55;
+
+      margin: -7px 0 17px;
+
     }
 
-    /* =========================
+
+    /* =====================================================
        WARDROBE
-    ========================= */
+    ===================================================== */
 
     .wardrobe-top {
+
       display: flex;
+
       align-items: center;
+
       justify-content: space-between;
+
       gap: 12px;
-      margin-bottom: 16px;
+
+      margin-bottom: 17px;
+
     }
+
+
+    .wardrobe-top strong {
+
+      font-size: 18px;
+
+    }
+
 
     .wardrobe-top .btn {
-      min-height: 46px;
+
+      min-height: 50px;
+
       padding: 10px 15px;
+
       width: auto;
+
       white-space: nowrap;
+
+      font-size: 15px;
+
     }
 
+
     .wardrobe-filter {
-      margin-bottom: 17px;
+
+      margin-bottom: 18px;
+
     }
+
 
     .wardrobe-grid,
     .favorites-grid {
+
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+
+      grid-template-columns:
+        repeat(2,minmax(0,1fr));
+
       gap: 12px;
+
     }
+
 
     .piece-card {
+
       background: white;
+
       border: 1px solid var(--border);
-      border-radius: 18px;
+
+      border-radius: 19px;
+
       overflow: hidden;
+
       min-width: 0;
+
     }
+
 
     .piece-photo {
+
       width: 100%;
+
       aspect-ratio: 1 / 1;
+
       background: #f0f0f0;
+
       display: block;
+
       object-fit: cover;
+
     }
+
 
     .piece-photo.no-photo {
+
       object-fit: contain;
+
       padding: 30px;
+
       opacity: .55;
+
     }
+
 
     .piece-info {
-      padding: 13px;
+
+      padding: 14px;
+
     }
+
 
     .piece-name {
+
       font-weight: 850;
-      font-size: 14px;
-      line-height: 1.25;
-      margin-bottom: 6px;
+
+      font-size: 15px;
+
+      line-height: 1.3;
+
+      margin-bottom: 7px;
+
       word-break: break-word;
+
     }
+
 
     .piece-meta {
+
       color: var(--muted);
-      font-size: 12px;
+
+      font-size: 13px;
+
       line-height: 1.45;
+
     }
+
 
     .piece-tag {
+
       display: inline-flex;
-      margin-top: 8px;
-      padding: 5px 8px;
+
+      margin-top: 9px;
+
+      padding: 6px 9px;
+
       border-radius: 999px;
+
       background: #f1f1f1;
-      font-size: 10px;
+
+      font-size: 11px;
+
       font-weight: 800;
+
     }
+
 
     .empty-state {
+
       background: white;
+
       border: 1px dashed #d4d4d4;
-      border-radius: 20px;
-      padding: 35px 20px;
+
+      border-radius: 21px;
+
+      padding: 38px 20px;
+
       text-align: center;
+
     }
+
 
     .empty-icon {
-      font-size: 36px;
-      margin-bottom: 10px;
+
+      font-size: 38px;
+
+      margin-bottom: 11px;
+
     }
+
 
     .empty-state strong {
+
       display: block;
-      font-size: 16px;
+
+      font-size: 17px;
+
     }
+
 
     .empty-state p {
+
       color: var(--muted);
-      font-size: 13px;
-      line-height: 1.5;
-      margin: 8px 0 18px;
+
+      font-size: 14px;
+
+      line-height: 1.55;
+
+      margin: 9px 0 19px;
+
     }
 
-    /* =========================
+
+    /* =====================================================
        STYLIST
-    ========================= */
+    ===================================================== */
 
     .stylist-hero {
+
       background: #111;
+
       color: white;
-      border-radius: 24px;
-      padding: 22px;
-      margin-bottom: 16px;
+
+      border-radius: 25px;
+
+      padding: 23px;
+
+      margin-bottom: 17px;
+
     }
+
 
     .stylist-hero-icon {
-      font-size: 30px;
-      margin-bottom: 8px;
+
+      font-size: 32px;
+
+      margin-bottom: 9px;
+
     }
+
 
     .stylist-hero h2 {
-      font-size: 23px;
-      margin: 0 0 7px;
+
+      font-size: 25px;
+
+      margin: 0 0 8px;
+
     }
+
 
     .stylist-hero p {
-      color: rgba(255,255,255,.7);
-      font-size: 14px;
-      line-height: 1.5;
+
+      color: rgba(255,255,255,.72);
+
+      font-size: 15px;
+
+      line-height: 1.55;
+
       margin: 0;
+
     }
+
 
     .stylist-box {
+
       background: white;
+
       border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 18px;
+
+      border-radius: 23px;
+
+      padding: 19px;
+
     }
+
 
     .stylist-controls {
+
       display: grid;
-      gap: 16px;
+
+      gap: 18px;
+
     }
+
 
     .field {
+
       width: 100%;
+
     }
+
 
     .field-hint {
+
       display: block;
-      margin-top: 6px;
+
+      margin-top: 7px;
+
       color: var(--muted);
-      font-size: 11px;
-      line-height: 1.4;
+
+      font-size: 12px;
+
+      line-height: 1.45;
+
     }
+
 
     .stylist-button {
+
       width: 100%;
-      min-height: 56px;
+
+      min-height: 61px;
+
       border: 0;
+
       border-radius: 17px;
+
       background: #111;
+
       color: white;
-      font-size: 16px;
+
+      font-size: 18px;
+
       font-weight: 900;
-      margin-top: 2px;
+
+      margin-top: 3px;
+
     }
+
 
     .stylist-button:disabled {
+
       opacity: .55;
+
       cursor: not-allowed;
+
     }
+
+
+    /* =====================================================
+       RESULTADO
+    ===================================================== */
 
     .look-result {
-      margin-top: 18px;
+
+      margin-top: 19px;
+
     }
+
 
     .result-card {
+
       background: #fafafa;
+
       border: 1px solid var(--border);
-      border-radius: 20px;
+
+      border-radius: 21px;
+
       overflow: hidden;
+
     }
+
 
     .result-header {
-      padding: 19px;
+
+      padding: 20px;
+
       background: white;
+
       border-bottom: 1px solid var(--border);
+
     }
+
 
     .result-header h3 {
+
       margin: 0;
-      font-size: 20px;
-      line-height: 1.2;
+
+      font-size: 22px;
+
+      line-height: 1.25;
+
     }
+
 
     .result-header p {
-      margin: 8px 0 0;
+
+      margin: 9px 0 0;
+
       color: var(--muted);
-      font-size: 13px;
-      line-height: 1.5;
+
+      font-size: 14px;
+
+      line-height: 1.55;
+
     }
+
 
     .compatibility {
+
       display: inline-flex;
-      margin-top: 12px;
-      padding: 8px 11px;
+
+      margin-top: 13px;
+
+      padding: 9px 12px;
+
       border-radius: 999px;
+
       background: #111;
+
       color: white;
-      font-size: 12px;
+
+      font-size: 13px;
+
       font-weight: 900;
+
     }
+
 
     .result-section {
-      padding: 18px;
+
+      padding: 19px;
+
       border-bottom: 1px solid var(--border);
+
     }
+
 
     .result-section:last-child {
+
       border-bottom: 0;
+
     }
+
 
     .result-section-title {
-      font-size: 14px;
+
+      font-size: 16px;
+
       font-weight: 900;
-      margin-bottom: 11px;
+
+      margin-bottom: 12px;
+
     }
+
 
     .result-pieces {
+
       display: grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
+
+      grid-template-columns:
+        repeat(2,minmax(0,1fr));
+
       gap: 10px;
+
     }
+
 
     .result-piece {
+
       background: white;
+
       border: 1px solid var(--border);
-      border-radius: 15px;
+
+      border-radius: 16px;
+
       overflow: hidden;
+
     }
+
 
     .result-piece img {
+
       width: 100%;
+
       aspect-ratio: 1;
+
       object-fit: cover;
+
       display: block;
+
     }
+
 
     .result-piece-name {
-      padding: 10px;
-      font-size: 12px;
+
+      padding: 11px;
+
+      font-size: 13px;
+
       font-weight: 800;
-      line-height: 1.35;
+
+      line-height: 1.4;
+
     }
+
 
     .result-text {
+
       color: #404040;
-      font-size: 14px;
-      line-height: 1.65;
+
+      font-size: 15px;
+
+      line-height: 1.7;
+
       white-space: pre-line;
+
     }
+
 
     .purchase-card {
-      background: linear-gradient(135deg, #faf5ff, #fff);
+
+      background:
+        linear-gradient(
+          135deg,
+          #faf5ff,
+          #fff
+        );
+
       border: 1px solid #e9d5ff;
-      border-radius: 18px;
-      padding: 17px;
+
+      border-radius: 19px;
+
+      padding: 18px;
+
     }
+
 
     .purchase-label {
+
       color: #7c3aed;
-      font-size: 11px;
+
+      font-size: 12px;
+
       font-weight: 900;
+
       text-transform: uppercase;
+
       letter-spacing: .6px;
-      margin-bottom: 7px;
+
+      margin-bottom: 8px;
+
     }
+
 
     .purchase-name {
-      font-size: 18px;
+
+      font-size: 20px;
+
       font-weight: 900;
-      margin-bottom: 7px;
+
+      margin-bottom: 8px;
+
     }
+
 
     .purchase-description {
+
       color: #525252;
-      font-size: 13px;
-      line-height: 1.5;
+
+      font-size: 14px;
+
+      line-height: 1.55;
+
     }
+
 
     .combination-count {
+
       display: inline-flex;
-      margin-top: 12px;
-      padding: 9px 11px;
+
+      margin-top: 13px;
+
+      padding: 10px 12px;
+
       border-radius: 11px;
+
       background: #ede9fe;
+
       color: #6d28d9;
-      font-size: 12px;
+
+      font-size: 13px;
+
       font-weight: 900;
+
     }
+
 
     .result-list {
+
       margin: 0;
-      padding-left: 20px;
+
+      padding-left: 21px;
+
       color: #404040;
-      font-size: 14px;
+
+      font-size: 15px;
+
       line-height: 1.7;
+
     }
+
 
     .result-list li {
-      margin-bottom: 5px;
+
+      margin-bottom: 6px;
+
     }
+
 
     .result-error {
+
       background: #fef2f2;
+
       border: 1px solid #fecaca;
+
       color: #991b1b;
-      border-radius: 17px;
-      padding: 16px;
-      font-size: 14px;
-      line-height: 1.5;
+
+      border-radius: 18px;
+
+      padding: 17px;
+
+      font-size: 15px;
+
+      line-height: 1.55;
+
     }
+
 
     .result-loading {
+
       text-align: center;
-      padding: 28px 15px;
+
+      padding: 31px 15px;
+
       color: var(--muted);
+
+      font-size: 15px;
+
     }
+
 
     .loading-spinner {
-      width: 32px;
-      height: 32px;
-      margin: 0 auto 12px;
+
+      width: 34px;
+
+      height: 34px;
+
+      margin: 0 auto 13px;
+
       border-radius: 50%;
+
       border: 3px solid #e5e5e5;
+
       border-top-color: #111;
-      animation: spin .8s linear infinite;
+
+      animation:
+        spin .8s linear infinite;
+
     }
+
 
     @keyframes spin {
+
       to {
-        transform: rotate(360deg);
+
+        transform:
+          rotate(360deg);
+
       }
+
     }
 
-    /* =========================
+
+    /* =====================================================
        FAVORITOS
-    ========================= */
+    ===================================================== */
 
     .favorite-heart {
+
       position: absolute;
+
       right: 9px;
+
       top: 9px;
-      width: 36px;
-      height: 36px;
+
+      width: 40px;
+
+      height: 40px;
+
       border: 0;
+
       border-radius: 50%;
-      background: rgba(255,255,255,.94);
+
+      background:
+        rgba(255,255,255,.95);
+
       display: flex;
+
       align-items: center;
+
       justify-content: center;
-      font-size: 18px;
-      box-shadow: 0 4px 15px rgba(0,0,0,.12);
+
+      font-size: 20px;
+
+      box-shadow:
+        0 4px 15px rgba(0,0,0,.12);
+
     }
+
 
     .photo-wrap {
+
       position: relative;
+
     }
 
-    /* =========================
+
+    /* =====================================================
        PROFILE
-    ========================= */
+    ===================================================== */
 
     .profile-card {
+
       background: white;
+
       border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 20px;
+
+      border-radius: 23px;
+
+      padding: 21px;
+
     }
+
 
     .profile-avatar {
-      width: 78px;
-      height: 78px;
-      margin: 0 auto 15px;
+
+      width: 82px;
+
+      height: 82px;
+
+      margin: 0 auto 16px;
+
       border-radius: 50%;
+
       background: #111;
+
       color: white;
+
       display: flex;
+
       align-items: center;
+
       justify-content: center;
-      font-size: 27px;
+
+      font-size: 29px;
+
       font-weight: 900;
+
     }
+
 
     .profile-name {
+
       text-align: center;
-      font-size: 21px;
+
+      font-size: 22px;
+
       font-weight: 900;
+
     }
+
 
     .profile-description {
+
       text-align: center;
+
       color: var(--muted);
-      font-size: 13px;
+
+      font-size: 14px;
+
       margin-top: 5px;
+
       line-height: 1.5;
+
     }
+
 
     .profile-actions {
-      margin-top: 22px;
+
+      margin-top: 23px;
+
       display: grid;
-      gap: 10px;
+
+      gap: 11px;
+
     }
 
-    /* =========================
+
+    /* =====================================================
        MODAL
-    ========================= */
+    ===================================================== */
 
     .modal {
+
       display: none;
+
       position: fixed;
+
       inset: 0;
+
       z-index: 100;
-      background: rgba(0,0,0,.58);
-      padding: 18px;
+
+      background:
+        rgba(0,0,0,.58);
+
+      padding: 16px;
+
       align-items: flex-end;
+
       justify-content: center;
+
     }
+
 
     .modal.open {
+
       display: flex;
+
     }
+
 
     .modal-card {
+
       width: 100%;
-      max-width: 600px;
-      max-height: 92vh;
-      max-height: 92dvh;
+
+      max-width: 620px;
+
+      max-height: 93vh;
+
+      max-height: 93dvh;
+
       overflow-y: auto;
+
       background: white;
-      border-radius: 25px 25px 18px 18px;
-      padding: 20px;
-      box-shadow: 0 20px 70px rgba(0,0,0,.25);
+
+      border-radius:
+        26px
+        26px
+        18px
+        18px;
+
+      padding: 21px;
+
+      box-shadow:
+        0 20px 70px rgba(0,0,0,.25);
+
     }
+
 
     .modal-header {
+
       display: flex;
+
       align-items: center;
+
       justify-content: space-between;
+
       gap: 15px;
-      margin-bottom: 18px;
+
+      margin-bottom: 19px;
+
     }
+
 
     .modal-header h2 {
+
       margin: 0;
-      font-size: 21px;
+
+      font-size: 23px;
+
     }
+
 
     .modal-close {
-      width: 40px;
-      height: 40px;
+
+      width: 43px;
+
+      height: 43px;
+
       border: 0;
+
       border-radius: 50%;
+
       background: #f1f1f1;
-      font-size: 21px;
+
+      font-size: 23px;
+
     }
+
 
     .modal-fields {
+
       display: grid;
-      gap: 15px;
+
+      gap: 17px;
+
     }
+
 
     .photo-upload {
-      border: 2px dashed #d4d4d4;
-      border-radius: 17px;
-      min-height: 150px;
+
+      border:
+        2px dashed #d4d4d4;
+
+      border-radius: 18px;
+
+      min-height: 170px;
+
       display: flex;
+
       align-items: center;
+
       justify-content: center;
+
       text-align: center;
+
       padding: 15px;
+
       position: relative;
+
       overflow: hidden;
+
       background: #fafafa;
+
     }
+
 
     .photo-upload input {
+
       position: absolute;
+
       inset: 0;
+
       opacity: 0;
+
       cursor: pointer;
+
     }
+
 
     .photo-upload-content {
+
       pointer-events: none;
+
     }
+
 
     .photo-upload-icon {
-      font-size: 30px;
-      margin-bottom: 7px;
+
+      font-size: 34px;
+
+      margin-bottom: 8px;
+
     }
+
 
     .photo-upload strong {
+
       display: block;
-      font-size: 14px;
+
+      font-size: 15px;
+
     }
+
 
     .photo-upload span {
+
       color: var(--muted);
+
       display: block;
-      font-size: 12px;
-      margin-top: 4px;
+
+      font-size: 13px;
+
+      margin-top: 5px;
+
     }
+
 
     #photoPreview {
+
       width: 100%;
-      max-height: 260px;
+
+      max-height: 280px;
+
       object-fit: contain;
-      border-radius: 14px;
+
+      border-radius: 15px;
+
       display: none;
+
       background: #f1f1f1;
+
     }
+
 
     .modal-actions {
+
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-top: 20px;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 11px;
+
+      margin-top: 22px;
+
     }
 
-    /* =========================
-       BOTTOM NAVIGATION
-    ========================= */
+
+    /* =====================================================
+       BOTTOM NAV
+    ===================================================== */
 
     .bottom-nav {
+
       position: fixed;
+
       left: 0;
+
       right: 0;
+
       bottom: 0;
+
       z-index: 50;
-      height: var(--nav-height);
-      background: rgba(255,255,255,.96);
-      backdrop-filter: blur(18px);
-      border-top: 1px solid #e5e5e5;
+
+      min-height:
+        var(--nav-height);
+
+      padding-bottom:
+        env(safe-area-inset-bottom);
+
+      background:
+        rgba(255,255,255,.97);
+
+      backdrop-filter:
+        blur(18px);
+
+      border-top:
+        1px solid #e5e5e5;
+
       display: flex;
+
       justify-content: center;
+
     }
+
 
     .bottom-nav-inner {
+
       width: 100%;
-      max-width: 700px;
+
+      max-width: 720px;
+
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+
+      grid-template-columns:
+        repeat(5,1fr);
+
       align-items: stretch;
+
     }
+
 
     .nav-item {
+
       border: 0;
+
       background: transparent;
+
       color: #8a8a8a;
+
       display: flex;
+
       flex-direction: column;
+
       align-items: center;
+
       justify-content: center;
-      gap: 4px;
+
+      gap: 5px;
+
       min-width: 0;
-      padding: 6px 2px;
+
+      padding: 7px 2px;
+
     }
+
 
     .nav-icon {
-      font-size: 21px;
+
+      font-size: 25px;
+
       line-height: 1;
+
     }
+
 
     .nav-label {
-      font-size: 10px;
-      font-weight: 750;
+
+      font-size: 12px;
+
+      font-weight: 800;
+
       white-space: nowrap;
+
     }
+
 
     .nav-item.active {
+
       color: #111;
+
     }
+
 
     .nav-item.active .nav-icon {
-      transform: translateY(-1px);
+
+      transform:
+        translateY(-1px);
+
     }
 
-    /* =========================
+
+    /* =====================================================
        TOAST
-    ========================= */
+    ===================================================== */
 
     #toast {
+
       position: fixed;
+
       left: 50%;
-      bottom: calc(var(--nav-height) + 16px);
-      transform: translate(-50%, 20px);
-      width: calc(100% - 32px);
+
+      bottom:
+        calc(
+          var(--nav-height)
+          + 18px
+          + env(safe-area-inset-bottom)
+        );
+
+      transform:
+        translate(-50%,20px);
+
+      width:
+        calc(100% - 32px);
+
       max-width: 500px;
-      padding: 13px 15px;
-      border-radius: 14px;
+
+      padding: 14px 16px;
+
+      border-radius: 15px;
+
       background: #111;
+
       color: white;
-      font-size: 13px;
-      line-height: 1.4;
+
+      font-size: 14px;
+
+      line-height: 1.45;
+
       text-align: center;
+
       opacity: 0;
+
       pointer-events: none;
+
       transition: .25s;
+
       z-index: 200;
+
     }
+
 
     #toast.show {
+
       opacity: 1;
-      transform: translate(-50%, 0);
+
+      transform:
+        translate(-50%,0);
+
     }
 
-    /* =========================
-       RESPONSIVE
-    ========================= */
+
+    /* =====================================================
+       DESKTOP
+    ===================================================== */
 
     @media (min-width: 600px) {
+
       .main {
+
         padding-left: 22px;
+
         padding-right: 22px;
+
       }
+
 
       .wardrobe-grid,
       .favorites-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+
+        grid-template-columns:
+          repeat(3,minmax(0,1fr));
+
       }
+
 
       .result-pieces {
-        grid-template-columns: repeat(3, minmax(0,1fr));
+
+        grid-template-columns:
+          repeat(3,minmax(0,1fr));
+
       }
+
 
       .modal {
+
         align-items: center;
+
       }
+
 
       .modal-card {
+
         border-radius: 25px;
+
       }
+
     }
 
-    @media (max-width: 360px) {
+
+    @media (max-width: 370px) {
+
       .page-header h1 {
-        font-size: 26px;
+
+        font-size: 29px;
+
       }
+
 
       .nav-label {
-        font-size: 9px;
+
+        font-size: 11px;
+
       }
+
 
       .nav-icon {
-        font-size: 19px;
+
+        font-size: 23px;
+
       }
+
 
       .stats {
+
         gap: 7px;
+
       }
+
 
       .stat-card {
-        padding: 14px 7px;
+
+        padding:
+          15px 6px;
+
       }
+
 
       .stat-number {
-        font-size: 22px;
+
+        font-size: 23px;
+
       }
 
+
       .quick-actions {
-        grid-template-columns: 1fr;
+
+        grid-template-columns:
+          1fr;
+
       }
+
     }
+
   </style>
+
 </head>
+
 
 <body>
 
-  <!-- =========================
-       LOGIN
-  ========================= -->
 
-  <section id="loginScreen">
+<!-- =====================================================
+     LOGIN
+===================================================== -->
 
-    <div class="login-card">
+<section id="loginScreen">
 
-      <div class="login-logo">
+  <div class="login-card">
+
+    <div class="login-logo">
+      PS
+    </div>
+
+    <h1>
+      Personal Stylist
+    </h1>
+
+    <p class="login-subtitle">
+      Seu guarda-roupa inteligente,
+      organizado em um só lugar.
+    </p>
+
+
+    <div class="login-field">
+
+      <label for="loginUser">
+        Usuário
+      </label>
+
+      <input
+        id="loginUser"
+        class="input"
+        type="text"
+        autocomplete="username"
+        placeholder="Digite seu usuário"
+      >
+
+    </div>
+
+
+    <div class="login-field">
+
+      <label for="loginPassword">
+        Senha
+      </label>
+
+      <input
+        id="loginPassword"
+        class="input"
+        type="password"
+        autocomplete="current-password"
+        placeholder="Digite sua senha"
+      >
+
+    </div>
+
+
+    <button
+      type="button"
+      class="btn btn-primary"
+      onclick="fazerLogin()"
+    >
+      Entrar
+    </button>
+
+
+    <div
+      id="loginError"
+      class="login-error"
+    >
+      Usuário ou senha incorretos.
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     APP
+===================================================== -->
+
+<div id="app">
+
+
+<header class="topbar">
+
+  <div class="topbar-inner">
+
+    <div class="brand">
+
+      <div class="brand-icon">
         PS
       </div>
 
-      <h1>Personal Stylist</h1>
+      <div>
 
-      <p class="login-subtitle">
-        Seu guarda-roupa inteligente,
-        organizado em um só lugar.
-      </p>
+        <div class="brand-title">
+          Personal Stylist
+        </div>
 
-      <div class="login-field">
-        <label for="loginUser">Usuário</label>
+        <div class="brand-subtitle">
+          Seu estilo, organizado.
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="profile-mini">
+      L
+    </div>
+
+  </div>
+
+</header>
+
+
+<main class="main">
+
+
+<!-- =====================================================
+     DASHBOARD
+===================================================== -->
+
+<section
+  id="page-dashboard"
+  class="page active"
+>
+
+  <div class="welcome-card">
+
+    <small>
+      BEM-VINDO DE VOLTA
+    </small>
+
+    <h2>
+      Olá, Lucas 👋
+    </h2>
+
+    <p>
+      Organize suas peças, monte combinações
+      e deixe a IA ajudar nas suas escolhas.
+    </p>
+
+  </div>
+
+
+  <div class="stats">
+
+    <div class="stat-card">
+
+      <div
+        id="statPieces"
+        class="stat-number"
+      >
+        0
+      </div>
+
+      <div class="stat-label">
+        Peças
+      </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+      <div
+        id="statFavorites"
+        class="stat-number"
+      >
+        0
+      </div>
+
+      <div class="stat-label">
+        Favoritos
+      </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+      <div
+        id="statCategories"
+        class="stat-number"
+      >
+        0
+      </div>
+
+      <div class="stat-label">
+        Categorias
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="quick-title">
+    Acesso rápido
+  </div>
+
+
+  <div class="quick-actions">
+
+
+    <button
+      class="quick-action"
+      type="button"
+      onclick="abrirPagina('wardrobe')"
+    >
+
+      <div class="quick-action-icon">
+        👕
+      </div>
+
+      <div>
+
+        <strong>
+          Meu guarda-roupa
+        </strong>
+
+        <span>
+          Ver minhas peças
+        </span>
+
+      </div>
+
+    </button>
+
+
+    <button
+      class="quick-action"
+      type="button"
+      onclick="abrirPagina('stylist')"
+    >
+
+      <div class="quick-action-icon">
+        ✨
+      </div>
+
+      <div>
+
+        <strong>
+          Criar um look
+        </strong>
+
+        <span>
+          Pedir ajuda à IA
+        </span>
+
+      </div>
+
+    </button>
+
+
+    <button
+      class="quick-action"
+      type="button"
+      onclick="abrirPagina('favorites')"
+    >
+
+      <div class="quick-action-icon">
+        ❤️
+      </div>
+
+      <div>
+
+        <strong>
+          Favoritos
+        </strong>
+
+        <span>
+          Minhas peças favoritas
+        </span>
+
+      </div>
+
+    </button>
+
+
+    <button
+      class="quick-action"
+      type="button"
+      onclick="abrirModal()"
+    >
+
+      <div class="quick-action-icon">
+        ➕
+      </div>
+
+      <div>
+
+        <strong>
+          Adicionar peça
+        </strong>
+
+        <span>
+          Cadastrar roupa
+        </span>
+
+      </div>
+
+    </button>
+
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     GUARDA ROUPA
+===================================================== -->
+
+<section
+  id="page-wardrobe"
+  class="page"
+>
+
+  <div class="page-header">
+
+    <h1>
+      Guarda-roupa
+    </h1>
+
+    <p>
+      Todas as suas peças organizadas
+      em um só lugar.
+    </p>
+
+  </div>
+
+
+  <div class="wardrobe-top">
+
+    <strong>
+      Minhas peças
+    </strong>
+
+    <button
+      type="button"
+      class="btn btn-primary"
+      onclick="abrirModal()"
+    >
+      + Adicionar
+    </button>
+
+  </div>
+
+
+  <div class="wardrobe-filter">
+
+    <select
+      id="wardrobeFilter"
+      class="select"
+      onchange="renderizarGuardaRoupa()"
+    >
+
+      <option value="todos">
+        Todas as categorias
+      </option>
+
+      <option value="camiseta">
+        Camisetas
+      </option>
+
+      <option value="camisa">
+        Camisas
+      </option>
+
+      <option value="calca">
+        Calças
+      </option>
+
+      <option value="bermuda">
+        Bermudas
+      </option>
+
+      <option value="short">
+        Shorts
+      </option>
+
+      <option value="tenis">
+        Tênis
+      </option>
+
+      <option value="sapato">
+        Sapatos
+      </option>
+
+      <option value="jaqueta">
+        Jaquetas
+      </option>
+
+      <option value="acessorio">
+        Acessórios
+      </option>
+
+      <option value="outro">
+        Outros
+      </option>
+
+    </select>
+
+  </div>
+
+
+  <div
+    id="wardrobeGrid"
+    class="wardrobe-grid"
+  ></div>
+
+</section>
+
+
+<!-- =====================================================
+     STYLIST
+===================================================== -->
+
+<section
+  id="page-stylist"
+  class="page"
+>
+
+  <div class="page-header">
+
+    <h1>
+      Stylist IA
+    </h1>
+
+    <p>
+      Explique o que você quer vestir
+      e deixe a IA analisar suas peças.
+    </p>
+
+  </div>
+
+
+  <div class="stylist-hero">
+
+    <div class="stylist-hero-icon">
+      ✨
+    </div>
+
+    <h2>
+      Vamos montar seu look?
+    </h2>
+
+    <p>
+      A IA analisará seu guarda-roupa,
+      seu estilo, ocasião, clima e pedido.
+    </p>
+
+  </div>
+
+
+  <div class="stylist-box">
+
+    <div class="stylist-controls">
+
+
+      <div class="field">
+
+        <label for="styleSelect">
+          Estilo
+        </label>
+
+        <select
+          id="styleSelect"
+          class="select"
+        >
+
+          <option value="Casual">
+            Casual
+          </option>
+
+          <option value="Elegante casual">
+            Elegante casual
+          </option>
+
+          <option value="Streetwear">
+            Streetwear
+          </option>
+
+          <option value="Minimalista">
+            Minimalista
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div class="field">
+
+        <label for="occasionSelect">
+          Ocasião
+        </label>
+
+        <select
+          id="occasionSelect"
+          class="select"
+        >
+
+          <option value="Trabalho">
+            Trabalho
+          </option>
+
+          <option value="Dia a dia">
+            Dia a dia
+          </option>
+
+          <option value="Encontro">
+            Encontro
+          </option>
+
+          <option value="Passeio">
+            Passeio
+          </option>
+
+          <option value="Festa">
+            Festa
+          </option>
+
+          <option value="Evento">
+            Evento
+          </option>
+
+          <option value="Outro">
+            Outro
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div class="field">
+
+        <label for="weatherSelect">
+          Clima
+        </label>
+
+        <select
+          id="weatherSelect"
+          class="select"
+        >
+
+          <option value="Quente">
+            ☀️ Quente
+          </option>
+
+          <option value="Ameno">
+            🌤️ Ameno
+          </option>
+
+          <option value="Frio">
+            🧥 Frio
+          </option>
+
+          <option value="Chuva">
+            🌧️ Chuva
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div class="field">
+
+        <label for="stylistObservation">
+          O que você está procurando?
+        </label>
+
+        <textarea
+          id="stylistObservation"
+          class="textarea"
+          placeholder="Ex.: Quero um look para trabalhar amanhã, está calor, quero parecer mais elegante e não quero usar camisa social."
+        ></textarea>
+
+        <span class="field-hint">
+          Escreva livremente. A IA considerará
+          seu pedido como prioridade.
+        </span>
+
+      </div>
+
+
+      <button
+        id="stylistButton"
+        type="button"
+        class="stylist-button"
+        onclick="pedirLook()"
+      >
+        ✨ Criar meu look
+      </button>
+
+
+    </div>
+
+
+    <div
+      id="lookResult"
+      class="look-result"
+    ></div>
+
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     FAVORITOS
+===================================================== -->
+
+<section
+  id="page-favorites"
+  class="page"
+>
+
+  <div class="page-header">
+
+    <h1>
+      Favoritos
+    </h1>
+
+    <p>
+      Suas peças preferidas.
+    </p>
+
+  </div>
+
+
+  <div
+    id="favoritesGrid"
+    class="favorites-grid"
+  ></div>
+
+</section>
+
+
+<!-- =====================================================
+     PERFIL
+===================================================== -->
+
+<section
+  id="page-profile"
+  class="page"
+>
+
+  <div class="page-header">
+
+    <h1>
+      Perfil
+    </h1>
+
+    <p>
+      Configurações do seu Personal Stylist.
+    </p>
+
+  </div>
+
+
+  <div class="profile-card">
+
+    <div class="profile-avatar">
+      L
+    </div>
+
+    <div class="profile-name">
+      Lucas
+    </div>
+
+    <div class="profile-description">
+      Personal Stylist
+    </div>
+
+
+    <div class="profile-actions">
+
+      <button
+        type="button"
+        class="btn btn-secondary"
+        onclick="abrirPagina('dashboard')"
+      >
+        Voltar ao início
+      </button>
+
+
+      <button
+        type="button"
+        class="btn btn-danger"
+        onclick="sair()"
+      >
+        Sair da conta
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+</main>
+
+
+<!-- =====================================================
+     BOTTOM NAV
+===================================================== -->
+
+<nav class="bottom-nav">
+
+  <div class="bottom-nav-inner">
+
+
+    <button
+      type="button"
+      class="nav-item active"
+      data-page="dashboard"
+      onclick="abrirPagina('dashboard')"
+    >
+
+      <span class="nav-icon">
+        ⌂
+      </span>
+
+      <span class="nav-label">
+        Início
+      </span>
+
+    </button>
+
+
+    <button
+      type="button"
+      class="nav-item"
+      data-page="wardrobe"
+      onclick="abrirPagina('wardrobe')"
+    >
+
+      <span class="nav-icon">
+        👕
+      </span>
+
+      <span class="nav-label">
+        Roupas
+      </span>
+
+    </button>
+
+
+    <button
+      type="button"
+      class="nav-item"
+      data-page="stylist"
+      onclick="abrirPagina('stylist')"
+    >
+
+      <span class="nav-icon">
+        ✨
+      </span>
+
+      <span class="nav-label">
+        Stylist
+      </span>
+
+    </button>
+
+
+    <button
+      type="button"
+      class="nav-item"
+      data-page="favorites"
+      onclick="abrirPagina('favorites')"
+    >
+
+      <span class="nav-icon">
+        ♥
+      </span>
+
+      <span class="nav-label">
+        Favoritos
+      </span>
+
+    </button>
+
+
+    <button
+      type="button"
+      class="nav-item"
+      data-page="profile"
+      onclick="abrirPagina('profile')"
+    >
+
+      <span class="nav-icon">
+        ☰
+      </span>
+
+      <span class="nav-label">
+        Perfil
+      </span>
+
+    </button>
+
+
+  </div>
+
+</nav>
+
+</div>
+
+
+<!-- =====================================================
+     MODAL
+===================================================== -->
+
+<div
+  id="pieceModal"
+  class="modal"
+  onclick="fecharModalFora(event)"
+>
+
+  <div
+    class="modal-card"
+    onclick="event.stopPropagation()"
+  >
+
+    <div class="modal-header">
+
+      <h2>
+        Adicionar peça
+      </h2>
+
+      <button
+        type="button"
+        class="modal-close"
+        onclick="fecharModal()"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <div class="modal-fields">
+
+
+      <div class="field">
+
+        <label for="pieceName">
+          Nome da peça
+        </label>
 
         <input
-          id="loginUser"
+          id="pieceName"
           class="input"
           type="text"
-          autocomplete="username"
-          placeholder="Digite seu usuário"
+          placeholder="Ex.: Camiseta preta básica"
         >
+
       </div>
 
-      <div class="login-field">
-        <label for="loginPassword">Senha</label>
+
+      <div class="field">
+
+        <label for="pieceCategory">
+          Categoria
+        </label>
+
+        <select
+          id="pieceCategory"
+          class="select"
+        >
+
+          <option value="camiseta">
+            Camiseta
+          </option>
+
+          <option value="camisa">
+            Camisa
+          </option>
+
+          <option value="calca">
+            Calça
+          </option>
+
+          <option value="bermuda">
+            Bermuda
+          </option>
+
+          <option value="short">
+            Short
+          </option>
+
+          <option value="tenis">
+            Tênis
+          </option>
+
+          <option value="sapato">
+            Sapato
+          </option>
+
+          <option value="jaqueta">
+            Jaqueta
+          </option>
+
+          <option value="acessorio">
+            Acessório
+          </option>
+
+          <option value="outro">
+            Outro
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div class="field">
+
+        <label for="pieceColor">
+          Cor
+        </label>
 
         <input
-          id="loginPassword"
+          id="pieceColor"
           class="input"
-          type="password"
-          autocomplete="current-password"
-          placeholder="Digite sua senha"
+          type="text"
+          placeholder="Ex.: Preto"
         >
+
       </div>
+
+
+      <div class="field">
+
+        <label for="pieceStyle">
+          Estilo
+        </label>
+
+        <select
+          id="pieceStyle"
+          class="select"
+        >
+
+          <option value="Casual">
+            Casual
+          </option>
+
+          <option value="Elegante casual">
+            Elegante casual
+          </option>
+
+          <option value="Streetwear">
+            Streetwear
+          </option>
+
+          <option value="Minimalista">
+            Minimalista
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div class="field">
+
+        <label for="pieceSize">
+          Tamanho
+        </label>
+
+        <input
+          id="pieceSize"
+          class="input"
+          type="text"
+          placeholder="Ex.: M, 40, 42..."
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Foto da peça
+        </label>
+
+        <div class="photo-upload">
+
+          <input
+            id="piecePhoto"
+            type="file"
+            accept="image/jpeg,image/png,image/webp"
+            onchange="processarFoto(this.files[0])"
+          >
+
+
+          <div
+            id="photoUploadContent"
+            class="photo-upload-content"
+          >
+
+            <div class="photo-upload-icon">
+              📸
+            </div>
+
+            <strong>
+              Toque para escolher uma foto
+            </strong>
+
+            <span>
+              JPG, PNG ou WEBP
+            </span>
+
+          </div>
+
+
+          <img
+            id="photoPreview"
+            alt="Pré-visualização da peça"
+          >
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+    <div class="modal-actions">
+
+      <button
+        type="button"
+        class="btn btn-secondary"
+        onclick="fecharModal()"
+      >
+        Cancelar
+      </button>
+
 
       <button
         type="button"
         class="btn btn-primary"
-        onclick="fazerLogin()"
+        onclick="salvarPeca()"
       >
-        Entrar
+        Salvar peça
       </button>
 
-      <div id="loginError" class="login-error">
-        Usuário ou senha incorretos.
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       APP
-  ========================= -->
-
-  <div id="app">
-
-    <!-- TOPBAR -->
-
-    <header class="topbar">
-
-      <div class="topbar-inner">
-
-        <div class="brand">
-
-          <div class="brand-icon">
-            PS
-          </div>
-
-          <div class="brand-text">
-
-            <div class="brand-title">
-              Personal Stylist
-            </div>
-
-            <div class="brand-subtitle">
-              Seu estilo, organizado.
-            </div>
-
-          </div>
-
-        </div>
-
-        <div class="profile-mini">
-          L
-        </div>
-
-      </div>
-
-    </header>
-
-
-    <!-- MAIN -->
-
-    <main class="main">
-
-
-      <!-- =====================
-           DASHBOARD
-      ====================== -->
-
-      <section
-        id="page-dashboard"
-        class="page active"
-      >
-
-        <div class="welcome-card">
-
-          <small>
-            BEM-VINDO DE VOLTA
-          </small>
-
-          <h2>
-            Olá, Lucas 👋
-          </h2>
-
-          <p>
-            Organize suas peças, monte combinações
-            e deixe a IA ajudar nas suas escolhas.
-          </p>
-
-        </div>
-
-
-        <div class="stats">
-
-          <div class="stat-card">
-            <div
-              id="statPieces"
-              class="stat-number"
-            >
-              0
-            </div>
-
-            <div class="stat-label">
-              Peças
-            </div>
-          </div>
-
-          <div class="stat-card">
-            <div
-              id="statFavorites"
-              class="stat-number"
-            >
-              0
-            </div>
-
-            <div class="stat-label">
-              Favoritos
-            </div>
-          </div>
-
-          <div class="stat-card">
-            <div
-              id="statCategories"
-              class="stat-number"
-            >
-              0
-            </div>
-
-            <div class="stat-label">
-              Categorias
-            </div>
-          </div>
-
-        </div>
-
-
-        <div class="quick-title">
-          Acesso rápido
-        </div>
-
-        <div class="quick-actions">
-
-          <button
-            class="quick-action"
-            type="button"
-            onclick="abrirPagina('wardrobe')"
-          >
-            <div class="quick-action-icon">
-              👕
-            </div>
-
-            <div>
-              <strong>
-                Meu guarda-roupa
-              </strong>
-
-              <span>
-                Ver minhas peças
-              </span>
-            </div>
-          </button>
-
-
-          <button
-            class="quick-action"
-            type="button"
-            onclick="abrirPagina('stylist')"
-          >
-            <div class="quick-action-icon">
-              ✨
-            </div>
-
-            <div>
-              <strong>
-                Criar um look
-              </strong>
-
-              <span>
-                Pedir ajuda à IA
-              </span>
-            </div>
-          </button>
-
-
-          <button
-            class="quick-action"
-            type="button"
-            onclick="abrirPagina('favorites')"
-          >
-            <div class="quick-action-icon">
-              ❤️
-            </div>
-
-            <div>
-              <strong>
-                Favoritos
-              </strong>
-
-              <span>
-                Minhas peças favoritas
-              </span>
-            </div>
-          </button>
-
-
-          <button
-            class="quick-action"
-            type="button"
-            onclick="abrirModal()"
-          >
-            <div class="quick-action-icon">
-              ➕
-            </div>
-
-            <div>
-              <strong>
-                Adicionar peça
-              </strong>
-
-              <span>
-                Cadastrar roupa
-              </span>
-            </div>
-          </button>
-
-        </div>
-
-      </section>
-
-
-      <!-- =====================
-           GUARDA-ROUPA
-      ====================== -->
-
-      <section
-        id="page-wardrobe"
-        class="page"
-      >
-
-        <div class="page-header">
-
-          <h1>
-            Guarda-roupa
-          </h1>
-
-          <p>
-            Todas as suas peças organizadas
-            em um só lugar.
-          </p>
-
-        </div>
-
-
-        <div class="wardrobe-top">
-
-          <strong>
-            Minhas peças
-          </strong>
-
-          <button
-            type="button"
-            class="btn btn-primary"
-            onclick="abrirModal()"
-          >
-            + Adicionar
-          </button>
-
-        </div>
-
-
-        <div class="wardrobe-filter">
-
-          <select
-            id="wardrobeFilter"
-            class="select"
-            onchange="renderizarGuardaRoupa()"
-          >
-
-            <option value="todos">
-              Todas as categorias
-            </option>
-
-            <option value="camiseta">
-              Camisetas
-            </option>
-
-            <option value="camisa">
-              Camisas
-            </option>
-
-            <option value="calca">
-              Calças
-            </option>
-
-            <option value="bermuda">
-              Bermudas
-            </option>
-
-            <option value="short">
-              Shorts
-            </option>
-
-            <option value="tenis">
-              Tênis
-            </option>
-
-            <option value="sapato">
-              Sapatos
-            </option>
-
-            <option value="jaqueta">
-              Jaquetas
-            </option>
-
-            <option value="acessorio">
-              Acessórios
-            </option>
-
-            <option value="outro">
-              Outros
-            </option>
-
-          </select>
-
-        </div>
-
-
-        <div
-          id="wardrobeGrid"
-          class="wardrobe-grid"
-        ></div>
-
-      </section>
-
-
-      <!-- =====================
-           STYLIST
-      ====================== -->
-
-      <section
-        id="page-stylist"
-        class="page"
-      >
-
-        <div class="page-header">
-
-          <h1>
-            Stylist IA
-          </h1>
-
-          <p>
-            Explique o que você quer vestir
-            e deixe a IA analisar suas peças.
-          </p>
-
-        </div>
-
-
-        <div class="stylist-hero">
-
-          <div class="stylist-hero-icon">
-            ✨
-          </div>
-
-          <h2>
-            Vamos montar seu look?
-          </h2>
-
-          <p>
-            Quanto mais detalhes você fornecer,
-            melhor a recomendação poderá considerar
-            seu objetivo, clima e preferências.
-          </p>
-
-        </div>
-
-
-        <div class="stylist-box">
-
-          <div class="stylist-controls">
-
-
-            <div class="field">
-
-              <label for="styleSelect">
-                Estilo
-              </label>
-
-              <select
-                id="styleSelect"
-                class="select"
-              >
-
-                <option value="Casual">
-                  Casual
-                </option>
-
-                <option value="Elegante casual">
-                  Elegante casual
-                </option>
-
-                <option value="Streetwear">
-                  Streetwear
-                </option>
-
-                <option value="Minimalista">
-                  Minimalista
-                </option>
-
-              </select>
-
-            </div>
-
-
-            <div class="field">
-
-              <label for="occasionSelect">
-                Ocasião
-              </label>
-
-              <select
-                id="occasionSelect"
-                class="select"
-              >
-
-                <option value="Trabalho">
-                  Trabalho
-                </option>
-
-                <option value="Dia a dia">
-                  Dia a dia
-                </option>
-
-                <option value="Encontro">
-                  Encontro
-                </option>
-
-                <option value="Passeio">
-                  Passeio
-                </option>
-
-                <option value="Festa">
-                  Festa
-                </option>
-
-                <option value="Evento">
-                  Evento
-                </option>
-
-                <option value="Outro">
-                  Outro
-                </option>
-
-              </select>
-
-            </div>
-
-
-            <div class="field">
-
-              <label for="weatherSelect">
-                Clima
-              </label>
-
-              <select
-                id="weatherSelect"
-                class="select"
-              >
-
-                <option value="Quente">
-                  ☀️ Quente
-                </option>
-
-                <option value="Ameno">
-                  🌤️ Ameno
-                </option>
-
-                <option value="Frio">
-                  🧥 Frio
-                </option>
-
-                <option value="Chuva">
-                  🌧️ Chuva
-                </option>
-
-              </select>
-
-            </div>
-
-
-            <div class="field">
-
-              <label for="stylistObservation">
-                O que você está procurando?
-              </label>
-
-              <textarea
-                id="stylistObservation"
-                class="textarea"
-                placeholder="Ex.: Quero um look para trabalhar amanhã, está calor, quero parecer mais elegante e não quero usar camisa social."
-              ></textarea>
-
-              <span class="field-hint">
-                Escreva livremente. A IA deve considerar
-                suas instruções como prioridade.
-              </span>
-
-            </div>
-
-
-            <button
-              id="stylistButton"
-              type="button"
-              class="stylist-button"
-              onclick="pedirLook()"
-            >
-              ✨ Criar meu look
-            </button>
-
-          </div>
-
-
-          <div
-            id="lookResult"
-            class="look-result"
-          ></div>
-
-        </div>
-
-      </section>
-
-
-      <!-- =====================
-           FAVORITOS
-      ====================== -->
-
-      <section
-        id="page-favorites"
-        class="page"
-      >
-
-        <div class="page-header">
-
-          <h1>
-            Favoritos
-          </h1>
-
-          <p>
-            Suas peças preferidas.
-          </p>
-
-        </div>
-
-
-        <div
-          id="favoritesGrid"
-          class="favorites-grid"
-        ></div>
-
-      </section>
-
-
-      <!-- =====================
-           PERFIL
-      ====================== -->
-
-      <section
-        id="page-profile"
-        class="page"
-      >
-
-        <div class="page-header">
-
-          <h1>
-            Perfil
-          </h1>
-
-          <p>
-            Configurações do seu Personal Stylist.
-          </p>
-
-        </div>
-
-
-        <div class="profile-card">
-
-          <div class="profile-avatar">
-            L
-          </div>
-
-          <div class="profile-name">
-            Lucas
-          </div>
-
-          <div class="profile-description">
-            Personal Stylist
-          </div>
-
-
-          <div class="profile-actions">
-
-            <button
-              type="button"
-              class="btn btn-secondary"
-              onclick="abrirPagina('dashboard')"
-            >
-              Voltar ao início
-            </button>
-
-            <button
-              type="button"
-              class="btn btn-danger"
-              onclick="sair()"
-            >
-              Sair da conta
-            </button>
-
-          </div>
-
-        </div>
-
-      </section>
-
-    </main>
-
-
-    <!-- =========================
-         BOTTOM NAV
-    ========================= -->
-
-    <nav class="bottom-nav">
-
-      <div class="bottom-nav-inner">
-
-        <button
-          type="button"
-          class="nav-item active"
-          data-page="dashboard"
-          onclick="abrirPagina('dashboard')"
-        >
-          <span class="nav-icon">⌂</span>
-          <span class="nav-label">Início</span>
-        </button>
-
-
-        <button
-          type="button"
-          class="nav-item"
-          data-page="wardrobe"
-          onclick="abrirPagina('wardrobe')"
-        >
-          <span class="nav-icon">👕</span>
-          <span class="nav-label">Roupas</span>
-        </button>
-
-
-        <button
-          type="button"
-          class="nav-item"
-          data-page="stylist"
-          onclick="abrirPagina('stylist')"
-        >
-          <span class="nav-icon">✨</span>
-          <span class="nav-label">Stylist</span>
-        </button>
-
-
-        <button
-          type="button"
-          class="nav-item"
-          data-page="favorites"
-          onclick="abrirPagina('favorites')"
-        >
-          <span class="nav-icon">♥</span>
-          <span class="nav-label">Favoritos</span>
-        </button>
-
-
-        <button
-          type="button"
-          class="nav-item"
-          data-page="profile"
-          onclick="abrirPagina('profile')"
-        >
-          <span class="nav-icon">☰</span>
-          <span class="nav-label">Perfil</span>
-        </button>
-
-      </div>
-
-    </nav>
-
-  </div>
-
-
-  <!-- =========================
-       MODAL
-  ========================= -->
-
-  <div
-    id="pieceModal"
-    class="modal"
-    onclick="fecharModalFora(event)"
-  >
-
-    <div
-      class="modal-card"
-      onclick="event.stopPropagation()"
-    >
-
-      <div class="modal-header">
-
-        <h2>
-          Adicionar peça
-        </h2>
-
-        <button
-          type="button"
-          class="modal-close"
-          onclick="fecharModal()"
-        >
-          ×
-        </button>
-
-      </div>
-
-
-      <div class="modal-fields">
-
-
-        <div class="field">
-
-          <label for="pieceName">
-            Nome da peça
-          </label>
-
-          <input
-            id="pieceName"
-            class="input"
-            type="text"
-            placeholder="Ex.: Camiseta preta básica"
-          >
-
-        </div>
-
-
-        <div class="field">
-
-          <label for="pieceCategory">
-            Categoria
-          </label>
-
-          <select
-            id="pieceCategory"
-            class="select"
-          >
-
-            <option value="camiseta">
-              Camiseta
-            </option>
-
-            <option value="camisa">
-              Camisa
-            </option>
-
-            <option value="calca">
-              Calça
-            </option>
-
-            <option value="bermuda">
-              Bermuda
-            </option>
-
-            <option value="short">
-              Short
-            </option>
-
-            <option value="tenis">
-              Tênis
-            </option>
-
-            <option value="sapato">
-              Sapato
-            </option>
-
-            <option value="jaqueta">
-              Jaqueta
-            </option>
-
-            <option value="acessorio">
-              Acessório
-            </option>
-
-            <option value="outro">
-              Outro
-            </option>
-
-          </select>
-
-        </div>
-
-
-        <div class="field">
-
-          <label for="pieceColor">
-            Cor
-          </label>
-
-          <input
-            id="pieceColor"
-            class="input"
-            type="text"
-            placeholder="Ex.: Preto"
-          >
-
-        </div>
-
-
-        <div class="field">
-
-          <label for="pieceStyle">
-            Estilo
-          </label>
-
-          <select
-            id="pieceStyle"
-            class="select"
-          >
-
-            <option value="Casual">
-              Casual
-            </option>
-
-            <option value="Elegante casual">
-              Elegante casual
-            </option>
-
-            <option value="Streetwear">
-              Streetwear
-            </option>
-
-            <option value="Minimalista">
-              Minimalista
-            </option>
-
-          </select>
-
-        </div>
-
-
-        <div class="field">
-
-          <label for="pieceSize">
-            Tamanho
-          </label>
-
-          <input
-            id="pieceSize"
-            class="input"
-            type="text"
-            placeholder="Ex.: M, 40, 42..."
-          >
-
-        </div>
-
-
-        <div class="field">
-
-          <label>
-            Foto da peça
-          </label>
-
-          <div class="photo-upload">
-
-            <input
-              id="piecePhoto"
-              type="file"
-              accept="image/jpeg,image/png,image/webp"
-              onchange="processarFoto(this.files[0])"
-            >
-
-            <div
-              id="photoUploadContent"
-              class="photo-upload-content"
-            >
-
-              <div class="photo-upload-icon">
-                📸
-              </div>
-
-              <strong>
-                Toque para escolher uma foto
-              </strong>
-
-              <span>
-                JPG, PNG ou WEBP
-              </span>
-
-            </div>
-
-            <img
-              id="photoPreview"
-              alt="Pré-visualização da peça"
-            >
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="modal-actions">
-
-        <button
-          type="button"
-          class="btn btn-secondary"
-          onclick="fecharModal()"
-        >
-          Cancelar
-        </button>
-
-        <button
-          type="button"
-          class="btn btn-primary"
-          onclick="salvarPeca()"
-        >
-          Salvar peça
-        </button>
-
-      </div>
-
     </div>
 
   </div>
 
-
-  <!-- TOAST -->
-
-  <div id="toast"></div>
+</div>
 
 
-  <script>
-
-    /* =====================================================
-       ESTADO
-    ===================================================== */
-
-    let guardaRoupa = [];
-    let fotoSelecionada = "";
-    let analisandoLook = false;
+<div id="toast"></div>
 
 
-    /* =====================================================
-       LOGIN
-    ===================================================== */
+<script>
 
-    function fazerLogin() {
-
-      const usuario =
-        document.getElementById("loginUser").value.trim();
-
-      const senha =
-        document.getElementById("loginPassword").value;
-
-      const erro =
-        document.getElementById("loginError");
+/* =====================================================
+   CONFIGURAÇÃO DA API
+===================================================== */
 
 
-      if (usuario === "lucas" && senha === "lucas") {
+/*
+   IMPORTANTE:
 
-        erro.style.display = "none";
+   COLE A URL /exec DO SEU GOOGLE APPS SCRIPT AQUI.
+*/
 
-        sessionStorage.setItem(
-          "personalStylistLogado",
-          "true"
-        );
-
-        document.getElementById("loginScreen").style.display = "none";
-
-        document.getElementById("app").style.display = "block";
-
-        carregarDados();
-
-        abrirPagina("dashboard");
-
-      } else {
-
-        erro.style.display = "block";
-
-      }
-
-    }
+const API_URL =
+  "https://script.google.com/macros/s/AKfycbwd1n8hBwfT1YOpZyEUU2sgAVenpc6tQ81EiP9TG9RN17uJ-aYTCnyLD0lD58CYBMN6/exec";
 
 
-    function verificarLogin() {
+/* =====================================================
+   ESTADO
+===================================================== */
 
-      const logado =
-        sessionStorage.getItem("personalStylistLogado");
+let guardaRoupa = [];
 
-      if (logado === "true") {
+let fotoSelecionada = "";
 
-        document.getElementById("loginScreen").style.display = "none";
-
-        document.getElementById("app").style.display = "block";
-
-        carregarDados();
-
-      }
-
-    }
+let analisandoLook = false;
 
 
-    function sair() {
+/* =====================================================
+   LOGIN
+===================================================== */
 
-      sessionStorage.removeItem(
-        "personalStylistLogado"
-      );
+function fazerLogin() {
 
-      location.reload();
+  const usuario =
+    document
+      .getElementById("loginUser")
+      .value
+      .trim();
 
-    }
+  const senha =
+    document
+      .getElementById("loginPassword")
+      .value;
+
+  const erro =
+    document.getElementById("loginError");
 
 
-    /* =====================================================
-       ENTER NO LOGIN
-    ===================================================== */
+  if (
+    usuario === "lucas" &&
+    senha === "lucas"
+  ) {
 
-    document.addEventListener("DOMContentLoaded", function() {
+    erro.style.display = "none";
 
-      document
-        .getElementById("loginPassword")
-        .addEventListener("keydown", function(event) {
 
-          if (event.key === "Enter") {
+    sessionStorage.setItem(
+      "personalStylistLogado",
+      "true"
+    );
+
+
+    document
+      .getElementById("loginScreen")
+      .style.display = "none";
+
+
+    document
+      .getElementById("app")
+      .style.display = "block";
+
+
+    carregarDados();
+
+    abrirPagina("dashboard");
+
+
+  } else {
+
+    erro.style.display = "block";
+
+  }
+
+}
+
+
+function verificarLogin() {
+
+  const logado =
+    sessionStorage.getItem(
+      "personalStylistLogado"
+    );
+
+
+  if (logado === "true") {
+
+    document
+      .getElementById("loginScreen")
+      .style.display = "none";
+
+
+    document
+      .getElementById("app")
+      .style.display = "block";
+
+
+    carregarDados();
+
+  }
+
+}
+
+
+function sair() {
+
+  sessionStorage.removeItem(
+    "personalStylistLogado"
+  );
+
+  location.reload();
+
+}
+
+
+/* =====================================================
+   ENTER LOGIN
+===================================================== */
+
+document.addEventListener(
+  "DOMContentLoaded",
+  function() {
+
+    document
+      .getElementById("loginPassword")
+      .addEventListener(
+        "keydown",
+        function(event) {
+
+          if (
+            event.key === "Enter"
+          ) {
+
             fazerLogin();
+
           }
 
-        });
-
-      verificarLogin();
-
-    });
-
-
-    /* =====================================================
-       STORAGE
-    ===================================================== */
-
-    function carregarDados() {
-
-      try {
-
-        const salvo =
-          localStorage.getItem("personalStylistGuardaRoupa");
-
-        if (salvo) {
-
-          guardaRoupa =
-            JSON.parse(salvo);
-
-        } else {
-
-          guardaRoupa = [];
-
         }
-
-      } catch (error) {
-
-        console.error(error);
-
-        guardaRoupa = [];
-
-      }
-
-      atualizarTudo();
-
-    }
+      );
 
 
-    function salvarDados() {
+    verificarLogin();
 
-      try {
-
-        localStorage.setItem(
-          "personalStylistGuardaRoupa",
-          JSON.stringify(guardaRoupa)
-        );
-
-      } catch (error) {
-
-        console.error(error);
-
-        mostrarToast(
-          "Não foi possível salvar. Talvez as fotos estejam ocupando muito espaço."
-        );
-
-      }
-
-    }
+  }
+);
 
 
-    /* =====================================================
-       NAVEGAÇÃO
-    ===================================================== */
+/* =====================================================
+   STORAGE
+===================================================== */
 
-    function abrirPagina(pagina) {
+function carregarDados() {
 
-      const paginas =
-        document.querySelectorAll(".page");
+  try {
 
-      paginas.forEach(function(page) {
-
-        page.classList.remove("active");
-
-      });
+    const salvo =
+      localStorage.getItem(
+        "personalStylistGuardaRoupa"
+      );
 
 
-      const destino =
-        document.getElementById(
-          "page-" + pagina
-        );
+    if (salvo) {
 
-      if (destino) {
-        destino.classList.add("active");
-      }
+      guardaRoupa =
+        JSON.parse(salvo);
 
+    } else {
 
-      const navItems =
-        document.querySelectorAll(".nav-item");
-
-      navItems.forEach(function(item) {
-
-        item.classList.remove("active");
-
-        if (
-          item.dataset.page === pagina
-        ) {
-
-          item.classList.add("active");
-
-        }
-
-      });
-
-
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-
-
-      if (pagina === "wardrobe") {
-        renderizarGuardaRoupa();
-      }
-
-      if (pagina === "favorites") {
-        renderizarFavoritos();
-      }
-
-      atualizarEstatisticas();
+      guardaRoupa = [];
 
     }
 
+  } catch (error) {
 
-    /* =====================================================
-       MODAL
-    ===================================================== */
+    console.error(error);
 
-    function abrirModal() {
+    guardaRoupa = [];
 
-      document
-        .getElementById("pieceModal")
-        .classList.add("open");
+  }
+
+
+  atualizarTudo();
+
+}
+
+
+function salvarDados() {
+
+  try {
+
+    localStorage.setItem(
+      "personalStylistGuardaRoupa",
+      JSON.stringify(
+        guardaRoupa
+      )
+    );
+
+  } catch (error) {
+
+    console.error(error);
+
+    mostrarToast(
+      "Não foi possível salvar. Talvez o armazenamento do celular esteja cheio."
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   NAVEGAÇÃO
+===================================================== */
+
+function abrirPagina(pagina) {
+
+  const paginas =
+    document.querySelectorAll(
+      ".page"
+    );
+
+
+  paginas.forEach(
+    function(page) {
+
+      page.classList.remove(
+        "active"
+      );
+
+    }
+  );
+
+
+  const destino =
+    document.getElementById(
+      "page-" + pagina
+    );
+
+
+  if (destino) {
+
+    destino.classList.add(
+      "active"
+    );
+
+  }
+
+
+  const navItems =
+    document.querySelectorAll(
+      ".nav-item"
+    );
+
+
+  navItems.forEach(
+    function(item) {
+
+      item.classList.remove(
+        "active"
+      );
+
+
+      if (
+        item.dataset.page === pagina
+      ) {
+
+        item.classList.add(
+          "active"
+        );
+
+      }
+
+    }
+  );
+
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+
+  if (
+    pagina === "wardrobe"
+  ) {
+
+    renderizarGuardaRoupa();
+
+  }
+
+
+  if (
+    pagina === "favorites"
+  ) {
+
+    renderizarFavoritos();
+
+  }
+
+
+  atualizarEstatisticas();
+
+}
+
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+function abrirModal() {
+
+  document
+    .getElementById("pieceModal")
+    .classList.add("open");
+
+
+  setTimeout(
+    function() {
 
       document
         .getElementById("pieceName")
         .focus();
 
-    }
+    },
+    150
+  );
+
+}
 
 
-    function fecharModal() {
+function fecharModal() {
 
-      document
-        .getElementById("pieceModal")
-        .classList.remove("open");
-
-      limparFormularioPeca();
-
-    }
+  document
+    .getElementById("pieceModal")
+    .classList.remove(
+      "open"
+    );
 
 
-    function fecharModalFora(event) {
+  limparFormularioPeca();
 
-      if (
-        event.target.id === "pieceModal"
-      ) {
-
-        fecharModal();
-
-      }
-
-    }
+}
 
 
-    function limparFormularioPeca() {
+function fecharModalFora(event) {
 
-      document.getElementById("pieceName").value = "";
-      document.getElementById("pieceCategory").value = "camiseta";
-      document.getElementById("pieceColor").value = "";
-      document.getElementById("pieceStyle").value = "Casual";
-      document.getElementById("pieceSize").value = "";
-      document.getElementById("piecePhoto").value = "";
+  if (
+    event.target.id ===
+    "pieceModal"
+  ) {
 
-      fotoSelecionada = "";
+    fecharModal();
 
-      const preview =
-        document.getElementById("photoPreview");
+  }
 
-      preview.src = "";
-      preview.style.display = "none";
-
-      document
-        .getElementById("photoUploadContent")
-        .style.display = "block";
-
-    }
+}
 
 
-    /* =====================================================
-       FOTO
-    ===================================================== */
+function limparFormularioPeca() {
 
-    function processarFoto(file) {
-
-      if (!file) {
-        return;
-      }
+  document
+    .getElementById("pieceName")
+    .value = "";
 
 
-      if (
-        ![
-          "image/jpeg",
-          "image/png",
-          "image/webp"
-        ].includes(file.type)
-      ) {
-
-        mostrarToast(
-          "Escolha uma imagem JPG, PNG ou WEBP."
-        );
-
-        return;
-
-      }
+  document
+    .getElementById("pieceCategory")
+    .value = "camiseta";
 
 
-      const reader =
-        new FileReader();
+  document
+    .getElementById("pieceColor")
+    .value = "";
 
 
-      reader.onload = function(event) {
+  document
+    .getElementById("pieceStyle")
+    .value = "Casual";
 
-        const img =
-          new Image();
+
+  document
+    .getElementById("pieceSize")
+    .value = "";
 
 
-        img.onload = function() {
+  document
+    .getElementById("piecePhoto")
+    .value = "";
+
+
+  fotoSelecionada = "";
+
+
+  const preview =
+    document.getElementById(
+      "photoPreview"
+    );
+
+
+  preview.src = "";
+
+  preview.style.display =
+    "none";
+
+
+  document
+    .getElementById(
+      "photoUploadContent"
+    )
+    .style.display = "block";
+
+}
+
+
+/* =====================================================
+   FOTO
+===================================================== */
+
+function processarFoto(file) {
+
+  if (!file) {
+
+    return;
+
+  }
+
+
+  if (
+    ![
+      "image/jpeg",
+      "image/png",
+      "image/webp"
+    ].includes(
+      file.type
+    )
+  ) {
+
+    mostrarToast(
+      "Escolha uma imagem JPG, PNG ou WEBP."
+    );
+
+    return;
+
+  }
+
+
+  const reader =
+    new FileReader();
+
+
+  reader.onload =
+    function(event) {
+
+      const img =
+        new Image();
+
+
+      img.onload =
+        function() {
 
           const max = 1000;
+
 
           const scale =
             Math.min(
@@ -2474,18 +3698,27 @@
 
 
           const canvas =
-            document.createElement("canvas");
+            document.createElement(
+              "canvas"
+            );
 
 
           canvas.width =
-            Math.round(img.width * scale);
+            Math.round(
+              img.width * scale
+            );
+
 
           canvas.height =
-            Math.round(img.height * scale);
+            Math.round(
+              img.height * scale
+            );
 
 
           const context =
-            canvas.getContext("2d");
+            canvas.getContext(
+              "2d"
+            );
 
 
           context.drawImage(
@@ -2500,1461 +3733,1814 @@
           fotoSelecionada =
             canvas.toDataURL(
               "image/jpeg",
-              0.82
+              0.78
             );
 
 
           const preview =
-            document.getElementById("photoPreview");
+            document.getElementById(
+              "photoPreview"
+            );
+
 
           preview.src =
             fotoSelecionada;
+
 
           preview.style.display =
             "block";
 
 
           document
-            .getElementById("photoUploadContent")
-            .style.display = "none";
+            .getElementById(
+              "photoUploadContent"
+            )
+            .style.display =
+            "none";
 
         };
 
 
-        img.src = event.target.result;
+      img.src =
+        event.target.result;
 
-      };
-
-
-      reader.readAsDataURL(file);
-
-    }
+    };
 
 
-    /* =====================================================
-       SALVAR PEÇA
-    ===================================================== */
+  reader.readAsDataURL(
+    file
+  );
 
-    function salvarPeca() {
-
-      const nome =
-        document
-          .getElementById("pieceName")
-          .value
-          .trim();
-
-      const categoria =
-        document
-          .getElementById("pieceCategory")
-          .value;
-
-      const cor =
-        document
-          .getElementById("pieceColor")
-          .value
-          .trim();
-
-      const estilo =
-        document
-          .getElementById("pieceStyle")
-          .value;
-
-      const tamanho =
-        document
-          .getElementById("pieceSize")
-          .value
-          .trim();
+}
 
 
-      if (!nome) {
+/* =====================================================
+   SALVAR PEÇA
+===================================================== */
 
-        mostrarToast(
-          "Digite o nome da peça."
-        );
+function salvarPeca() {
 
-        return;
-
-      }
-
-
-      const novaPeca = {
-
-        id:
-          "peca_" +
-          Date.now() +
-          "_" +
-          Math.random()
-            .toString(36)
-            .substring(2, 8),
-
-        nome: nome,
-
-        categoria: categoria,
-
-        cor: cor || "Não informada",
-
-        estilo: estilo,
-
-        tamanho: tamanho || "Não informado",
-
-        foto: fotoSelecionada || "",
-
-        favorito: false,
-
-        criadaEm:
-          new Date().toISOString()
-
-      };
+  const nome =
+    document
+      .getElementById(
+        "pieceName"
+      )
+      .value
+      .trim();
 
 
-      guardaRoupa.unshift(
-        novaPeca
+  const categoria =
+    document
+      .getElementById(
+        "pieceCategory"
+      )
+      .value;
+
+
+  const cor =
+    document
+      .getElementById(
+        "pieceColor"
+      )
+      .value
+      .trim();
+
+
+  const estilo =
+    document
+      .getElementById(
+        "pieceStyle"
+      )
+      .value;
+
+
+  const tamanho =
+    document
+      .getElementById(
+        "pieceSize"
+      )
+      .value
+      .trim();
+
+
+  if (!nome) {
+
+    mostrarToast(
+      "Digite o nome da peça."
+    );
+
+    return;
+
+  }
+
+
+  const novaPeca = {
+
+    id:
+      "peca_" +
+      Date.now() +
+      "_" +
+      Math.random()
+        .toString(36)
+        .substring(2,8),
+
+    nome: nome,
+
+    categoria: categoria,
+
+    cor:
+      cor ||
+      "Não informada",
+
+    estilo: estilo,
+
+    tamanho:
+      tamanho ||
+      "Não informado",
+
+    foto:
+      fotoSelecionada ||
+      "",
+
+    favorito: false,
+
+    criadaEm:
+      new Date()
+        .toISOString()
+
+  };
+
+
+  guardaRoupa.unshift(
+    novaPeca
+  );
+
+
+  salvarDados();
+
+  atualizarTudo();
+
+  fecharModal();
+
+  abrirPagina(
+    "wardrobe"
+  );
+
+
+  mostrarToast(
+    "Peça adicionada ao seu guarda-roupa."
+  );
+
+}
+
+
+/* =====================================================
+   EXCLUIR
+===================================================== */
+
+function excluirPeca(id) {
+
+  const peca =
+    guardaRoupa.find(
+      item =>
+        item.id === id
+    );
+
+
+  if (!peca) {
+
+    return;
+
+  }
+
+
+  const confirmar =
+    confirm(
+      "Deseja realmente excluir " +
+      peca.nome +
+      "?"
+    );
+
+
+  if (!confirmar) {
+
+    return;
+
+  }
+
+
+  guardaRoupa =
+    guardaRoupa.filter(
+      item =>
+        item.id !== id
+    );
+
+
+  salvarDados();
+
+  atualizarTudo();
+
+
+  mostrarToast(
+    "Peça removida."
+  );
+
+}
+
+
+/* =====================================================
+   FAVORITOS
+===================================================== */
+
+function alternarFavorito(id) {
+
+  const peca =
+    guardaRoupa.find(
+      item =>
+        item.id === id
+    );
+
+
+  if (!peca) {
+
+    return;
+
+  }
+
+
+  peca.favorito =
+    !peca.favorito;
+
+
+  salvarDados();
+
+  atualizarTudo();
+
+
+  mostrarToast(
+    peca.favorito
+      ? "Adicionado aos favoritos ❤️"
+      : "Removido dos favoritos."
+  );
+
+}
+
+
+/* =====================================================
+   RENDER GUARDA ROUPA
+===================================================== */
+
+function renderizarGuardaRoupa() {
+
+  const grid =
+    document.getElementById(
+      "wardrobeGrid"
+    );
+
+
+  const filtro =
+    document.getElementById(
+      "wardrobeFilter"
+    ).value;
+
+
+  let lista =
+    guardaRoupa;
+
+
+  if (
+    filtro !== "todos"
+  ) {
+
+    lista =
+      guardaRoupa.filter(
+        item =>
+          item.categoria ===
+          filtro
       );
 
+  }
 
-      salvarDados();
 
-      atualizarTudo();
+  if (!lista.length) {
 
-      fecharModal();
+    grid.innerHTML = `
 
-      abrirPagina("wardrobe");
+      <div
+        class="empty-state"
+        style="grid-column:1/-1"
+      >
 
-      mostrarToast(
-        "Peça adicionada ao seu guarda-roupa."
-      );
+        <div class="empty-icon">
+          👕
+        </div>
 
-    }
+        <strong>
+          Nenhuma peça encontrada
+        </strong>
 
+        <p>
+          Adicione suas roupas para
+          começar a montar seu guarda-roupa.
+        </p>
 
-    /* =====================================================
-       EXCLUIR PEÇA
-    ===================================================== */
+        <button
+          type="button"
+          class="btn btn-primary"
+          onclick="abrirModal()"
+        >
+          + Adicionar primeira peça
+        </button>
 
-    function excluirPeca(id) {
+      </div>
 
-      const peca =
-        guardaRoupa.find(
-          item => item.id === id
-        );
+    `;
 
-      if (!peca) {
-        return;
-      }
+    return;
 
+  }
 
-      const confirmar =
-        confirm(
-          "Deseja realmente excluir " +
-          peca.nome +
-          "?"
-        );
 
+  grid.innerHTML =
+    lista
+      .map(
+        renderizarCardPeca
+      )
+      .join("");
 
-      if (!confirmar) {
-        return;
-      }
+}
 
 
-      guardaRoupa =
-        guardaRoupa.filter(
-          item => item.id !== id
-        );
+function renderizarCardPeca(peca) {
 
+  const imagem =
+    peca.foto
 
-      salvarDados();
+      ? `
 
-      atualizarTudo();
+        <img
+          class="piece-photo"
+          src="${peca.foto}"
+          alt="${escapeHTML(peca.nome)}"
+          loading="lazy"
+        >
 
-      mostrarToast(
-        "Peça removida."
-      );
+      `
 
-    }
+      : `
 
-
-    /* =====================================================
-       FAVORITOS
-    ===================================================== */
-
-    function alternarFavorito(id) {
-
-      const peca =
-        guardaRoupa.find(
-          item => item.id === id
-        );
-
-      if (!peca) {
-        return;
-      }
-
-
-      peca.favorito =
-        !peca.favorito;
-
-
-      salvarDados();
-
-      atualizarTudo();
-
-
-      mostrarToast(
-        peca.favorito
-          ? "Adicionado aos favoritos ❤️"
-          : "Removido dos favoritos."
-      );
-
-    }
-
-
-    /* =====================================================
-       RENDER GUARDA-ROUPA
-    ===================================================== */
-
-    function renderizarGuardaRoupa() {
-
-      const grid =
-        document.getElementById(
-          "wardrobeGrid"
-        );
-
-
-      const filtro =
-        document.getElementById(
-          "wardrobeFilter"
-        ).value;
-
-
-      let lista =
-        guardaRoupa;
-
-
-      if (filtro !== "todos") {
-
-        lista =
-          guardaRoupa.filter(
-            item =>
-              item.categoria === filtro
-          );
-
-      }
-
-
-      if (!lista.length) {
-
-        grid.innerHTML = `
-
-          <div class="empty-state"
-               style="grid-column:1/-1">
-
-            <div class="empty-icon">
-              👕
-            </div>
-
-            <strong>
-              Nenhuma peça encontrada
-            </strong>
-
-            <p>
-              Adicione suas roupas para
-              começar a montar seu guarda-roupa.
-            </p>
-
-            <button
-              type="button"
-              class="btn btn-primary"
-              onclick="abrirModal()"
-            >
-              + Adicionar primeira peça
-            </button>
-
-          </div>
-
-        `;
-
-        return;
-
-      }
-
-
-      grid.innerHTML =
-        lista
-          .map(renderizarCardPeca)
-          .join("");
-
-    }
-
-
-    function renderizarCardPeca(peca) {
-
-      const imagem =
-        peca.foto
-          ? `
-            <img
-              class="piece-photo"
-              src="${peca.foto}"
-              alt="${escapeHTML(peca.nome)}"
-              loading="lazy"
-            >
-          `
-          : `
-            <div
-              class="piece-photo no-photo"
-              style="
-                display:flex;
-                align-items:center;
-                justify-content:center;
-                font-size:42px;
-              "
-            >
-              👕
-            </div>
-          `;
-
-
-      return `
-
-        <article class="piece-card">
-
-          <div class="photo-wrap">
-
-            ${imagem}
-
-            <button
-              type="button"
-              class="favorite-heart"
-              onclick="alternarFavorito('${peca.id}')"
-              aria-label="Favoritar"
-            >
-              ${peca.favorito ? "❤️" : "♡"}
-            </button>
-
-          </div>
-
-
-          <div class="piece-info">
-
-            <div class="piece-name">
-              ${escapeHTML(peca.nome)}
-            </div>
-
-            <div class="piece-meta">
-              ${escapeHTML(formatarCategoria(peca.categoria))}
-              ·
-              ${escapeHTML(peca.cor)}
-            </div>
-
-            <div class="piece-tag">
-              ${escapeHTML(peca.estilo)}
-            </div>
-
-            <button
-              type="button"
-              onclick="excluirPeca('${peca.id}')"
-              style="
-                border:0;
-                background:transparent;
-                color:#999;
-                padding:8px 0 0;
-                font-size:11px;
-              "
-            >
-              Excluir
-            </button>
-
-          </div>
-
-        </article>
-
-      `;
-
-    }
-
-
-    /* =====================================================
-       FAVORITOS
-    ===================================================== */
-
-    function renderizarFavoritos() {
-
-      const grid =
-        document.getElementById(
-          "favoritesGrid"
-        );
-
-
-      const favoritos =
-        guardaRoupa.filter(
-          item => item.favorito
-        );
-
-
-      if (!favoritos.length) {
-
-        grid.innerHTML = `
-
-          <div
-            class="empty-state"
-            style="grid-column:1/-1"
-          >
-
-            <div class="empty-icon">
-              ❤️
-            </div>
-
-            <strong>
-              Você ainda não tem favoritos
-            </strong>
-
-            <p>
-              Toque no coração de uma peça
-              para adicioná-la aqui.
-            </p>
-
-          </div>
-
-        `;
-
-        return;
-
-      }
-
-
-      grid.innerHTML =
-        favoritos
-          .map(renderizarCardPeca)
-          .join("");
-
-    }
-
-
-    /* =====================================================
-       ESTATÍSTICAS
-    ===================================================== */
-
-    function atualizarEstatisticas() {
-
-      const favoritos =
-        guardaRoupa.filter(
-          item => item.favorito
-        );
-
-
-      const categorias =
-        new Set(
-          guardaRoupa.map(
-            item => item.categoria
-          )
-        );
-
-
-      document.getElementById(
-        "statPieces"
-      ).textContent =
-        guardaRoupa.length;
-
-
-      document.getElementById(
-        "statFavorites"
-      ).textContent =
-        favoritos.length;
-
-
-      document.getElementById(
-        "statCategories"
-      ).textContent =
-        categorias.size;
-
-    }
-
-
-    /* =====================================================
-       ATUALIZAÇÃO GERAL
-    ===================================================== */
-
-    function atualizarTudo() {
-
-      atualizarEstatisticas();
-
-      renderizarGuardaRoupa();
-
-      renderizarFavoritos();
-
-    }
-
-
-    /* =====================================================
-       STYLIST IA
-    ===================================================== */
-
-    function pedirLook() {
-
-      if (analisandoLook) {
-        return;
-      }
-
-
-      if (!guardaRoupa.length) {
-
-        mostrarResultadoErro(
-          "Seu guarda-roupa ainda está vazio. Adicione algumas peças antes de pedir um look."
-        );
-
-        return;
-
-      }
-
-
-      const observacoes =
-        document
-          .getElementById("stylistObservation")
-          .value
-          .trim();
-
-
-      const preferencias = {
-
-        estilo:
-          document
-            .getElementById("styleSelect")
-            .value,
-
-        ocasiao:
-          document
-            .getElementById("occasionSelect")
-            .value,
-
-        clima:
-          document
-            .getElementById("weatherSelect")
-            .value,
-
-        observacoes:
-          observacoes
-
-      };
-
-
-      /*
-        Enviamos as informações tanto no nível principal
-        quanto dentro de "preferencias".
-
-        Isso mantém compatibilidade com diferentes
-        versões do Código.gs.
-      */
-
-      const dados = {
-
-        guardaRoupa:
-          prepararGuardaRoupa(),
-
-        estilo:
-          preferencias.estilo,
-
-        ocasiao:
-          preferencias.ocasiao,
-
-        clima:
-          preferencias.clima,
-
-        observacoes:
-          preferencias.observacoes,
-
-        preferencias:
-          preferencias
-
-      };
-
-
-      analisandoLook = true;
-
-
-      const button =
-        document.getElementById(
-          "stylistButton"
-        );
-
-
-      button.disabled = true;
-
-      button.textContent =
-        "✨ Analisando seu guarda-roupa...";
-
-
-      const result =
-        document.getElementById(
-          "lookResult"
-        );
-
-
-      result.innerHTML = `
-
-        <div class="result-card">
-
-          <div class="result-loading">
-
-            <div class="loading-spinner"></div>
-
-            <strong>
-              Seu Stylist está pensando...
-            </strong>
-
-            <div style="margin-top:6px;font-size:12px;">
-              Analisando suas peças e suas preferências.
-            </div>
-
-          </div>
-
+        <div
+          class="piece-photo no-photo"
+          style="
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:42px;
+          "
+        >
+          👕
         </div>
 
       `;
 
 
-      /*
-        Google Apps Script
-      */
+  return `
 
-      google.script.run
+    <article class="piece-card">
 
-        .withSuccessHandler(
-          function(resultado) {
+      <div class="photo-wrap">
 
-            analisandoLook = false;
-
-            button.disabled = false;
-
-            button.textContent =
-              "✨ Criar meu look";
+        ${imagem}
 
 
-            if (!resultado) {
+        <button
+          type="button"
+          class="favorite-heart"
+          onclick="alternarFavorito('${peca.id}')"
+          aria-label="Favoritar"
+        >
+          ${peca.favorito ? "❤️" : "♡"}
+        </button>
 
-              mostrarResultadoErro(
-                "A IA não retornou nenhuma resposta."
-              );
-
-              return;
-
-            }
-
-
-            if (
-              resultado.sucesso === false
-            ) {
-
-              mostrarResultadoErro(
-                resultado.mensagem ||
-                resultado.erro ||
-                "Não foi possível analisar o look."
-              );
-
-              return;
-
-            }
+      </div>
 
 
-            mostrarResultadoLook(
-              resultado
-            );
+      <div class="piece-info">
 
-          }
+        <div class="piece-name">
+          ${escapeHTML(peca.nome)}
+        </div>
+
+
+        <div class="piece-meta">
+
+          ${escapeHTML(
+            formatarCategoria(
+              peca.categoria
+            )
+          )}
+
+          ·
+
+          ${escapeHTML(
+            peca.cor
+          )}
+
+        </div>
+
+
+        <div class="piece-tag">
+          ${escapeHTML(
+            peca.estilo
+          )}
+        </div>
+
+
+        <button
+          type="button"
+          onclick="excluirPeca('${peca.id}')"
+          style="
+            border:0;
+            background:transparent;
+            color:#999;
+            padding:9px 0 0;
+            font-size:12px;
+          "
+        >
+          Excluir
+        </button>
+
+      </div>
+
+    </article>
+
+  `;
+
+}
+
+
+/* =====================================================
+   FAVORITOS
+===================================================== */
+
+function renderizarFavoritos() {
+
+  const grid =
+    document.getElementById(
+      "favoritesGrid"
+    );
+
+
+  const favoritos =
+    guardaRoupa.filter(
+      item =>
+        item.favorito
+    );
+
+
+  if (!favoritos.length) {
+
+    grid.innerHTML = `
+
+      <div
+        class="empty-state"
+        style="grid-column:1/-1"
+      >
+
+        <div class="empty-icon">
+          ❤️
+        </div>
+
+        <strong>
+          Você ainda não tem favoritos
+        </strong>
+
+        <p>
+          Toque no coração de uma peça
+          para adicioná-la aqui.
+        </p>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  grid.innerHTML =
+    favoritos
+      .map(
+        renderizarCardPeca
+      )
+      .join("");
+
+}
+
+
+/* =====================================================
+   ESTATÍSTICAS
+===================================================== */
+
+function atualizarEstatisticas() {
+
+  const favoritos =
+    guardaRoupa.filter(
+      item =>
+        item.favorito
+    );
+
+
+  const categorias =
+    new Set(
+      guardaRoupa.map(
+        item =>
+          item.categoria
+      )
+    );
+
+
+  document.getElementById(
+    "statPieces"
+  ).textContent =
+    guardaRoupa.length;
+
+
+  document.getElementById(
+    "statFavorites"
+  ).textContent =
+    favoritos.length;
+
+
+  document.getElementById(
+    "statCategories"
+  ).textContent =
+    categorias.size;
+
+}
+
+
+/* =====================================================
+   ATUALIZAÇÃO GERAL
+===================================================== */
+
+function atualizarTudo() {
+
+  atualizarEstatisticas();
+
+  renderizarGuardaRoupa();
+
+  renderizarFavoritos();
+
+}
+
+
+/* =====================================================
+   STYLIST IA
+===================================================== */
+
+async function pedirLook() {
+
+  if (analisandoLook) {
+
+    return;
+
+  }
+
+
+  if (!guardaRoupa.length) {
+
+    mostrarResultadoErro(
+      "Seu guarda-roupa ainda está vazio. Adicione algumas peças antes de pedir um look."
+    );
+
+    return;
+
+  }
+
+
+  if (
+    !API_URL ||
+    API_URL.includes(
+      "COLE_AQUI"
+    )
+  ) {
+
+    mostrarResultadoErro(
+      "A API ainda não foi configurada. Abra o index.html e coloque a URL /exec do Google Apps Script na variável API_URL."
+    );
+
+    return;
+
+  }
+
+
+  const observacoes =
+    document
+      .getElementById(
+        "stylistObservation"
+      )
+      .value
+      .trim();
+
+
+  const preferencias = {
+
+    estilo:
+      document
+        .getElementById(
+          "styleSelect"
         )
+        .value,
 
-        .withFailureHandler(
-          function(error) {
-
-            analisandoLook = false;
-
-            button.disabled = false;
-
-            button.textContent =
-              "✨ Criar meu look";
-
-
-            console.error(error);
-
-
-            const mensagem =
-              error &&
-              error.message
-                ? error.message
-                : "";
-
-
-            if (
-              mensagem.includes("503") ||
-              mensagem.toLowerCase().includes("unavailable") ||
-              mensagem.toLowerCase().includes("high demand")
-            ) {
-
-              mostrarResultadoErro(
-                "O Gemini está temporariamente em alta demanda. Aguarde alguns segundos e tente novamente."
-              );
-
-            } else {
-
-              mostrarResultadoErro(
-                "Não foi possível conectar com o Stylist IA. Verifique seu Código.gs e tente novamente."
-              );
-
-            }
-
-          }
+    ocasiao:
+      document
+        .getElementById(
+          "occasionSelect"
         )
+        .value,
 
-        .analisarLook(dados);
+    clima:
+      document
+        .getElementById(
+          "weatherSelect"
+        )
+        .value,
 
-    }
+    observacoes:
+      observacoes
+
+  };
 
 
-    /* =====================================================
-       PREPARAR GUARDA-ROUPA PARA IA
-    ===================================================== */
+  const dados = {
 
-    function prepararGuardaRoupa() {
+    guardaRoupa:
+      prepararGuardaRoupa(),
 
-      return guardaRoupa.map(
-        function(peca) {
+    estilo:
+      preferencias.estilo,
 
-          return {
+    ocasiao:
+      preferencias.ocasiao,
 
-            id:
-              peca.id,
+    clima:
+      preferencias.clima,
 
-            nome:
-              peca.nome,
+    observacoes:
+      preferencias.observacoes,
 
-            categoria:
-              peca.categoria,
+    preferencias:
+      preferencias
 
-            cor:
-              peca.cor,
+  };
 
-            estilo:
-              peca.estilo,
 
-            tamanho:
-              peca.tamanho,
+  analisandoLook = true;
 
-            favorito:
-              !!peca.favorito
 
-          };
+  const button =
+    document.getElementById(
+      "stylistButton"
+    );
+
+
+  button.disabled = true;
+
+  button.textContent =
+    "✨ Analisando seu guarda-roupa...";
+
+
+  const result =
+    document.getElementById(
+      "lookResult"
+    );
+
+
+  result.innerHTML = `
+
+    <div class="result-card">
+
+      <div class="result-loading">
+
+        <div class="loading-spinner"></div>
+
+        <strong>
+          Seu Stylist está pensando...
+        </strong>
+
+        <div
+          style="
+            margin-top:7px;
+            font-size:13px;
+          "
+        >
+          Analisando suas peças e suas preferências.
+        </div>
+
+      </div>
+
+    </div>
+
+  `;
+
+
+  try {
+
+    const resposta =
+      await fetch(
+        API_URL,
+        {
+
+          method: "POST",
+
+          headers: {
+
+            /*
+              text/plain evita que o navegador
+              faça um preflight CORS em muitos casos.
+            */
+
+            "Content-Type":
+              "text/plain;charset=utf-8"
+
+          },
+
+          redirect: "follow",
+
+          body:
+            JSON.stringify(
+              dados
+            )
 
         }
       );
 
+
+    if (!resposta.ok) {
+
+      throw new Error(
+        "HTTP " +
+        resposta.status
+      );
+
     }
 
 
-    /* =====================================================
-       RESULTADO DA IA
-    ===================================================== */
-
-    function mostrarResultadoLook(resultado) {
-
-      const container =
-        document.getElementById(
-          "lookResult"
-        );
+    const resultado =
+      await resposta.json();
 
 
-      const titulo =
-        resultado.titulo ||
-        "Look recomendado";
+    analisandoLook = false;
+
+    button.disabled = false;
+
+    button.textContent =
+      "✨ Criar meu look";
 
 
-      const compatibilidade =
-        resultado.compatibilidade !== undefined
-          ? resultado.compatibilidade
-          : "";
+    if (!resultado) {
+
+      mostrarResultadoErro(
+        "A IA não retornou nenhuma resposta."
+      );
+
+      return;
+
+    }
 
 
-      const explicacao =
-        resultado.explicacao ||
-        "A IA montou esta combinação considerando suas peças e preferências.";
+    if (
+      resultado.sucesso === false
+    ) {
+
+      mostrarResultadoErro(
+        resultado.mensagem ||
+        resultado.erro ||
+        "Não foi possível analisar o look."
+      );
+
+      return;
+
+    }
 
 
-      const pecas =
-        Array.isArray(resultado.pecas)
-          ? resultado.pecas
-          : [];
+    mostrarResultadoLook(
+      resultado
+    );
 
 
-      const pecaFaltante =
-        resultado.pecaFaltante;
+  } catch (error) {
+
+    analisandoLook = false;
+
+    button.disabled = false;
+
+    button.textContent =
+      "✨ Criar meu look";
 
 
-      const cores =
-        resultado.cores ||
-        "";
+    console.error(
+      "Erro ao chamar API:",
+      error
+    );
 
 
-      const formalidade =
-        resultado.formalidade ||
-        "";
+    const mensagem =
+      error &&
+      error.message
+        ? error.message
+        : "";
 
 
-      const estilo =
-        resultado.estilo ||
-        "";
+    if (
+      mensagem.includes("503") ||
+      mensagem.includes("502") ||
+      mensagem.includes("504")
+    ) {
+
+      mostrarResultadoErro(
+        "O Gemini ou o servidor está temporariamente indisponível. Aguarde alguns segundos e tente novamente."
+      );
+
+    } else if (
+      mensagem.includes("Failed to fetch") ||
+      mensagem.includes("NetworkError") ||
+      mensagem.includes("CORS")
+    ) {
+
+      mostrarResultadoErro(
+        "O navegador não conseguiu acessar a API. Verifique se o Google Apps Script foi publicado como Web App com acesso para qualquer pessoa e se a URL termina em /exec."
+      );
+
+    } else {
+
+      mostrarResultadoErro(
+        "Não foi possível conectar com o Stylist IA. Verifique a URL da API e o Google Apps Script."
+      );
+
+    }
+
+  }
+
+}
 
 
-      const ocasiao =
-        resultado.ocasiao ||
-        "";
+/* =====================================================
+   PREPARAR GUARDA ROUPA
+===================================================== */
+
+function prepararGuardaRoupa() {
+
+  return guardaRoupa.map(
+    function(peca) {
+
+      return {
+
+        id:
+          peca.id,
+
+        nome:
+          peca.nome,
+
+        categoria:
+          peca.categoria,
+
+        cor:
+          peca.cor,
+
+        estilo:
+          peca.estilo,
+
+        tamanho:
+          peca.tamanho,
+
+        favorito:
+          !!peca.favorito
+
+      };
+
+    }
+  );
+
+}
 
 
-      const alternativa =
-        resultado.alternativa ||
-        "";
+/* =====================================================
+   RESULTADO DA IA
+===================================================== */
+
+function mostrarResultadoLook(
+  resultado
+) {
+
+  const container =
+    document.getElementById(
+      "lookResult"
+    );
 
 
-      const dicas =
-        Array.isArray(resultado.dicas)
-          ? resultado.dicas
-          : [];
+  const titulo =
+    resultado.titulo ||
+    "Look recomendado";
 
 
-      let html = `
-
-        <div class="result-card">
-
-          <div class="result-header">
-
-            <h3>
-              ${escapeHTML(titulo)}
-            </h3>
-
-            ${
-              ocasiao
-                ? `
-                  <p>
-                    ${escapeHTML(ocasiao)}
-                  </p>
-                `
-                : ""
-            }
-
-            ${
-              compatibilidade !== ""
-                ? `
-                  <div class="compatibility">
-                    Compatibilidade: ${escapeHTML(String(compatibilidade))}
-                  </div>
-                `
-                : ""
-            }
-
-          </div>
-
-      `;
+  const compatibilidade =
+    resultado.compatibilidade !==
+    undefined
+      ? resultado.compatibilidade
+      : "";
 
 
-      /* PEÇAS */
-
-      if (pecas.length) {
-
-        html += `
-
-          <div class="result-section">
-
-            <div class="result-section-title">
-              👔 Peças do look
-            </div>
-
-            <div class="result-pieces">
-
-        `;
+  const explicacao =
+    resultado.explicacao ||
+    "A IA montou esta combinação considerando suas peças e preferências.";
 
 
-        pecas.forEach(
-          function(item) {
-
-            let id =
-              typeof item === "string"
-                ? item
-                : item.id;
-
-
-            let nome =
-              typeof item === "string"
-                ? item
-                : (
-                    item.nome ||
-                    item.name ||
-                    "Peça"
-                  );
+  const pecas =
+    Array.isArray(
+      resultado.pecas
+    )
+      ? resultado.pecas
+      : [];
 
 
-            const peca =
-              guardaRoupa.find(
-                roupa =>
-                  roupa.id === id
+  const pecaFaltante =
+    resultado.pecaFaltante;
+
+
+  const cores =
+    resultado.cores ||
+    "";
+
+
+  const formalidade =
+    resultado.formalidade ||
+    "";
+
+
+  const estilo =
+    resultado.estilo ||
+    "";
+
+
+  const ocasiao =
+    resultado.ocasiao ||
+    "";
+
+
+  const alternativa =
+    resultado.alternativa ||
+    "";
+
+
+  const dicas =
+    Array.isArray(
+      resultado.dicas
+    )
+      ? resultado.dicas
+      : [];
+
+
+  let html = `
+
+    <div class="result-card">
+
+      <div class="result-header">
+
+        <h3>
+          ${escapeHTML(titulo)}
+        </h3>
+
+
+        ${
+          ocasiao
+            ? `
+              <p>
+                ${escapeHTML(
+                  ocasiao
+                )}
+              </p>
+            `
+            : ""
+        }
+
+
+        ${
+          compatibilidade !== ""
+            ? `
+              <div class="compatibility">
+                Compatibilidade:
+                ${escapeHTML(
+                  String(
+                    compatibilidade
+                  )
+                )}
+              </div>
+            `
+            : ""
+        }
+
+      </div>
+
+  `;
+
+
+  /* PEÇAS */
+
+  if (
+    pecas.length
+  ) {
+
+    html += `
+
+      <div class="result-section">
+
+        <div class="result-section-title">
+          👔 Peças do look
+        </div>
+
+        <div class="result-pieces">
+
+    `;
+
+
+    pecas.forEach(
+      function(item) {
+
+        let id =
+          typeof item ===
+          "string"
+
+            ? item
+
+            : item.id;
+
+
+        let nome =
+          typeof item ===
+          "string"
+
+            ? item
+
+            : (
+                item.nome ||
+                item.name ||
+                "Peça"
               );
 
 
-            const foto =
-              peca && peca.foto
-                ? `
-                  <img
-                    src="${peca.foto}"
-                    alt="${escapeHTML(nome)}"
-                    loading="lazy"
-                  >
-                `
-                : `
-                  <div
-                    style="
-                      aspect-ratio:1;
-                      display:flex;
-                      align-items:center;
-                      justify-content:center;
-                      font-size:42px;
-                      background:#f0f0f0;
-                    "
-                  >
-                    👕
-                  </div>
-                `;
+        const peca =
+          guardaRoupa.find(
+            roupa =>
+              roupa.id ===
+              id
+          );
 
 
-            html += `
+        const foto =
+          peca &&
+          peca.foto
 
-              <div class="result-piece">
+            ? `
 
-                ${foto}
+              <img
+                src="${peca.foto}"
+                alt="${escapeHTML(nome)}"
+                loading="lazy"
+              >
 
-                <div class="result-piece-name">
-                  ${escapeHTML(nome)}
-                </div>
+            `
 
+            : `
+
+              <div
+                style="
+                  aspect-ratio:1;
+                  display:flex;
+                  align-items:center;
+                  justify-content:center;
+                  font-size:42px;
+                  background:#f0f0f0;
+                "
+              >
+                👕
               </div>
 
             `;
 
-          }
-        );
-
 
         html += `
 
-            </div>
+          <div class="result-piece">
 
-          </div>
+            ${foto}
 
-        `;
-
-      }
-
-
-      /* EXPLICAÇÃO */
-
-      html += `
-
-        <div class="result-section">
-
-          <div class="result-section-title">
-            💡 Por que funciona
-          </div>
-
-          <div class="result-text">
-            ${escapeHTML(explicacao)}
-          </div>
-
-        </div>
-
-      `;
-
-
-      /* DETALHES */
-
-      if (
-        cores ||
-        formalidade ||
-        estilo
-      ) {
-
-        html += `
-
-          <div class="result-section">
-
-            <div class="result-section-title">
-              📌 Detalhes
-            </div>
-
-            <div class="result-text">
-
-              ${
-                estilo
-                  ? `<strong>Estilo:</strong> ${escapeHTML(estilo)}<br>`
-                  : ""
-              }
-
-              ${
-                formalidade
-                  ? `<strong>Formalidade:</strong> ${escapeHTML(formalidade)}<br>`
-                  : ""
-              }
-
-              ${
-                cores
-                  ? `<strong>Cores:</strong> ${escapeHTML(cores)}`
-                  : ""
-              }
-
-            </div>
-
-          </div>
-
-        `;
-
-      }
-
-
-      /* PEÇA FALTANTE / COMPRA */
-
-      if (pecaFaltante) {
-
-        html += criarCardCompra(
-          pecaFaltante
-        );
-
-      }
-
-
-      /* ALTERNATIVA */
-
-      if (alternativa) {
-
-        html += `
-
-          <div class="result-section">
-
-            <div class="result-section-title">
-              🔄 Outra combinação possível
-            </div>
-
-            <div class="result-text">
-              ${escapeHTML(alternativa)}
-            </div>
-
-          </div>
-
-        `;
-
-      }
-
-
-      /* DICAS */
-
-      if (dicas.length) {
-
-        html += `
-
-          <div class="result-section">
-
-            <div class="result-section-title">
-              ✨ Dicas
-            </div>
-
-            <ul class="result-list">
-
-        `;
-
-
-        dicas.forEach(
-          function(dica) {
-
-            html += `
-              <li>
-                ${escapeHTML(String(dica))}
-              </li>
-            `;
-
-          }
-        );
-
-
-        html += `
-
-            </ul>
-
-          </div>
-
-        `;
-
-      }
-
-
-      html += `
-        </div>
-      `;
-
-
-      container.innerHTML =
-        html;
-
-    }
-
-
-    /* =====================================================
-       CARD DE COMPRA
-    ===================================================== */
-
-    function criarCardCompra(pecaFaltante) {
-
-      let nome = "";
-      let descricao = "";
-      let combinacoes = null;
-
-
-      if (
-        typeof pecaFaltante === "string"
-      ) {
-
-        nome =
-          pecaFaltante;
-
-      } else {
-
-        nome =
-          pecaFaltante.nome ||
-          pecaFaltante.name ||
-          pecaFaltante.item ||
-          "Peça recomendada";
-
-        descricao =
-          pecaFaltante.explicacao ||
-          pecaFaltante.descricao ||
-          pecaFaltante.motivo ||
-          "";
-
-        combinacoes =
-          pecaFaltante.combinacoes ??
-          pecaFaltante.quantidadeCombinacoes ??
-          pecaFaltante.numeroCombinacoes ??
-          null;
-
-      }
-
-
-      /*
-        Caso o Gemini não envie o número,
-        fazemos uma estimativa usando o
-        guarda-roupa atual.
-      */
-
-      if (
-        combinacoes === null ||
-        combinacoes === undefined ||
-        isNaN(Number(combinacoes))
-      ) {
-
-        combinacoes =
-          estimarCombinacoesParaPeca(
-            nome
-          );
-
-      }
-
-
-      combinacoes =
-        Math.max(
-          1,
-          Math.round(
-            Number(combinacoes)
-          )
-        );
-
-
-      return `
-
-        <div class="result-section">
-
-          <div class="result-section-title">
-            🛍️ Sugestão para complementar
-          </div>
-
-          <div class="purchase-card">
-
-            <div class="purchase-label">
-              Sugestão de compra
-            </div>
-
-            <div class="purchase-name">
+            <div class="result-piece-name">
               ${escapeHTML(nome)}
             </div>
 
-            <div class="purchase-description">
-
-              ${
-                descricao
-                  ? escapeHTML(descricao)
-                  : "Você ainda não possui essa peça no guarda-roupa. Ela foi sugerida para aumentar as possibilidades de combinações."
-              }
-
-            </div>
-
-            <div class="combination-count">
-              ≈ ${combinacoes} combinações possíveis
-            </div>
-
           </div>
 
-        </div>
-
-      `;
-
-    }
-
-
-    /* =====================================================
-       ESTIMATIVA DE COMBINAÇÕES
-    ===================================================== */
-
-    function estimarCombinacoesParaPeca(nome) {
-
-      const texto =
-        String(nome || "")
-          .toLowerCase();
-
-
-      const tops =
-        guardaRoupa.filter(
-          p =>
-            [
-              "camiseta",
-              "camisa"
-            ].includes(p.categoria)
-        ).length;
-
-
-      const bottoms =
-        guardaRoupa.filter(
-          p =>
-            [
-              "calca",
-              "bermuda",
-              "short"
-            ].includes(p.categoria)
-        ).length;
-
-
-      const calcados =
-        guardaRoupa.filter(
-          p =>
-            [
-              "tenis",
-              "sapato"
-            ].includes(p.categoria)
-        ).length;
-
-
-      let resultado = 1;
-
-
-      if (
-        texto.includes("camiseta") ||
-        texto.includes("camisa") ||
-        texto.includes("polo") ||
-        texto.includes("blusa")
-      ) {
-
-        resultado =
-          Math.max(
-            1,
-            bottoms *
-            Math.max(1, calcados)
-          );
-
-      } else if (
-        texto.includes("calça") ||
-        texto.includes("calca") ||
-        texto.includes("bermuda") ||
-        texto.includes("short")
-      ) {
-
-        resultado =
-          Math.max(
-            1,
-            tops *
-            Math.max(1, calcados)
-          );
-
-      } else if (
-        texto.includes("tênis") ||
-        texto.includes("tenis") ||
-        texto.includes("sapato")
-      ) {
-
-        resultado =
-          Math.max(
-            1,
-            tops *
-            Math.max(1, bottoms)
-          );
-
-      } else {
-
-        resultado =
-          Math.max(
-            1,
-            tops *
-            Math.max(1, bottoms)
-          );
+        `;
 
       }
+    );
 
 
-      return Math.min(
-        99,
-        resultado
-      );
-
-    }
-
-
-    /* =====================================================
-       ERRO DA IA
-    ===================================================== */
-
-    function mostrarResultadoErro(mensagem) {
-
-      document.getElementById(
-        "lookResult"
-      ).innerHTML = `
-
-        <div class="result-error">
-
-          <strong>
-            Não foi possível montar o look.
-          </strong>
-
-          <div style="margin-top:7px;">
-            ${escapeHTML(mensagem)}
-          </div>
+    html += `
 
         </div>
 
-      `;
+      </div>
 
-    }
+    `;
 
-
-    /* =====================================================
-       ESCAPE HTML
-    ===================================================== */
-
-    function escapeHTML(valor) {
-
-      return String(valor ?? "")
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
-
-    }
+  }
 
 
-    /* =====================================================
-       CATEGORIAS
-    ===================================================== */
+  /* EXPLICAÇÃO */
 
-    function formatarCategoria(categoria) {
+  html += `
 
-      const mapa = {
+    <div class="result-section">
 
-        camiseta: "Camiseta",
+      <div class="result-section-title">
+        💡 Por que funciona
+      </div>
 
-        camisa: "Camisa",
+      <div class="result-text">
+        ${escapeHTML(explicacao)}
+      </div>
 
-        calca: "Calça",
+    </div>
 
-        bermuda: "Bermuda",
-
-        short: "Short",
-
-        tenis: "Tênis",
-
-        sapato: "Sapato",
-
-        jaqueta: "Jaqueta",
-
-        acessorio: "Acessório",
-
-        outro: "Outro"
-
-      };
+  `;
 
 
-      return mapa[categoria] ||
-        categoria ||
-        "Outro";
+  /* DETALHES */
 
-    }
+  if (
+    cores ||
+    formalidade ||
+    estilo
+  ) {
+
+    html += `
+
+      <div class="result-section">
+
+        <div class="result-section-title">
+          📌 Detalhes
+        </div>
+
+        <div class="result-text">
+
+          ${
+            estilo
+              ? `
+                <strong>
+                  Estilo:
+                </strong>
+                ${escapeHTML(estilo)}
+                <br>
+              `
+              : ""
+          }
 
 
-    /* =====================================================
-       TOAST
-    ===================================================== */
+          ${
+            formalidade
+              ? `
+                <strong>
+                  Formalidade:
+                </strong>
+                ${escapeHTML(formalidade)}
+                <br>
+              `
+              : ""
+          }
 
-    let toastTimer;
+
+          ${
+            cores
+              ? `
+                <strong>
+                  Cores:
+                </strong>
+                ${escapeHTML(cores)}
+              `
+              : ""
+          }
+
+        </div>
+
+      </div>
+
+    `;
+
+  }
 
 
-    function mostrarToast(mensagem) {
+  /* PEÇA FALTANTE */
 
-      const toast =
-        document.getElementById(
-          "toast"
+  if (
+    pecaFaltante
+  ) {
+
+    html +=
+      criarCardCompra(
+        pecaFaltante
+      );
+
+  }
+
+
+  /* ALTERNATIVA */
+
+  if (
+    alternativa
+  ) {
+
+    html += `
+
+      <div class="result-section">
+
+        <div class="result-section-title">
+          🔄 Outra combinação possível
+        </div>
+
+        <div class="result-text">
+          ${escapeHTML(
+            alternativa
+          )}
+        </div>
+
+      </div>
+
+    `;
+
+  }
+
+
+  /* DICAS */
+
+  if (
+    dicas.length
+  ) {
+
+    html += `
+
+      <div class="result-section">
+
+        <div class="result-section-title">
+          ✨ Dicas
+        </div>
+
+        <ul class="result-list">
+
+    `;
+
+
+    dicas.forEach(
+      function(dica) {
+
+        html += `
+
+          <li>
+            ${escapeHTML(
+              String(dica)
+            )}
+          </li>
+
+        `;
+
+      }
+    );
+
+
+    html += `
+
+        </ul>
+
+      </div>
+
+    `;
+
+  }
+
+
+  html += `
+    </div>
+  `;
+
+
+  container.innerHTML =
+    html;
+
+}
+
+
+/* =====================================================
+   CARD COMPRA
+===================================================== */
+
+function criarCardCompra(
+  pecaFaltante
+) {
+
+  let nome = "";
+
+  let descricao = "";
+
+  let combinacoes = null;
+
+
+  if (
+    typeof pecaFaltante ===
+    "string"
+  ) {
+
+    nome =
+      pecaFaltante;
+
+  } else {
+
+    nome =
+      pecaFaltante.nome ||
+      pecaFaltante.name ||
+      pecaFaltante.item ||
+      "Peça recomendada";
+
+
+    descricao =
+      pecaFaltante.explicacao ||
+      pecaFaltante.descricao ||
+      pecaFaltante.motivo ||
+      "";
+
+
+    combinacoes =
+      pecaFaltante.combinacoes ??
+      pecaFaltante.quantidadeCombinacoes ??
+      pecaFaltante.numeroCombinacoes ??
+      null;
+
+  }
+
+
+  if (
+    combinacoes === null ||
+    combinacoes === undefined ||
+    isNaN(
+      Number(combinacoes)
+    )
+  ) {
+
+    combinacoes =
+      estimarCombinacoesParaPeca(
+        nome
+      );
+
+  }
+
+
+  combinacoes =
+    Math.max(
+      1,
+      Math.round(
+        Number(
+          combinacoes
+        )
+      )
+    );
+
+
+  return `
+
+    <div class="result-section">
+
+      <div class="result-section-title">
+        🛍️ Sugestão para complementar
+      </div>
+
+
+      <div class="purchase-card">
+
+        <div class="purchase-label">
+          Sugestão de compra
+        </div>
+
+
+        <div class="purchase-name">
+          ${escapeHTML(nome)}
+        </div>
+
+
+        <div class="purchase-description">
+
+          ${
+            descricao
+              ? escapeHTML(
+                  descricao
+                )
+
+              : "Você ainda não possui essa peça no guarda-roupa. Ela foi sugerida para aumentar as possibilidades de combinações."
+          }
+
+        </div>
+
+
+        <div class="combination-count">
+
+          ≈
+          ${combinacoes}
+          combinações possíveis
+
+        </div>
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   ESTIMATIVA
+===================================================== */
+
+function estimarCombinacoesParaPeca(
+  nome
+) {
+
+  const texto =
+    String(
+      nome || ""
+    ).toLowerCase();
+
+
+  const tops =
+    guardaRoupa.filter(
+      p =>
+        [
+          "camiseta",
+          "camisa"
+        ].includes(
+          p.categoria
+        )
+    ).length;
+
+
+  const bottoms =
+    guardaRoupa.filter(
+      p =>
+        [
+          "calca",
+          "bermuda",
+          "short"
+        ].includes(
+          p.categoria
+        )
+    ).length;
+
+
+  const calcados =
+    guardaRoupa.filter(
+      p =>
+        [
+          "tenis",
+          "sapato"
+        ].includes(
+          p.categoria
+        )
+    ).length;
+
+
+  let resultado = 1;
+
+
+  if (
+    texto.includes(
+      "camiseta"
+    ) ||
+    texto.includes(
+      "camisa"
+    ) ||
+    texto.includes(
+      "polo"
+    ) ||
+    texto.includes(
+      "blusa"
+    )
+  ) {
+
+    resultado =
+      Math.max(
+        1,
+        bottoms *
+        Math.max(
+          1,
+          calcados
+        )
+      );
+
+
+  } else if (
+    texto.includes(
+      "calça"
+    ) ||
+    texto.includes(
+      "calca"
+    ) ||
+    texto.includes(
+      "bermuda"
+    ) ||
+    texto.includes(
+      "short"
+    )
+  ) {
+
+    resultado =
+      Math.max(
+        1,
+        tops *
+        Math.max(
+          1,
+          calcados
+        )
+      );
+
+
+  } else if (
+    texto.includes(
+      "tênis"
+    ) ||
+    texto.includes(
+      "tenis"
+    ) ||
+    texto.includes(
+      "sapato"
+    )
+  ) {
+
+    resultado =
+      Math.max(
+        1,
+        tops *
+        Math.max(
+          1,
+          bottoms
+        )
+      );
+
+
+  } else {
+
+    resultado =
+      Math.max(
+        1,
+        tops *
+        Math.max(
+          1,
+          bottoms
+        )
+      );
+
+  }
+
+
+  return Math.min(
+    99,
+    resultado
+  );
+
+}
+
+
+/* =====================================================
+   ERRO
+===================================================== */
+
+function mostrarResultadoErro(
+  mensagem
+) {
+
+  document.getElementById(
+    "lookResult"
+  ).innerHTML = `
+
+    <div class="result-error">
+
+      <strong>
+        Não foi possível montar o look.
+      </strong>
+
+      <div
+        style="
+          margin-top:8px;
+        "
+      >
+        ${escapeHTML(
+          mensagem
+        )}
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   ESCAPE
+===================================================== */
+
+function escapeHTML(
+  valor
+) {
+
+  return String(
+    valor ?? ""
+  )
+
+    .replace(
+      /&/g,
+      "&amp;"
+    )
+
+    .replace(
+      /</g,
+      "&lt;"
+    )
+
+    .replace(
+      />/g,
+      "&gt;"
+    )
+
+    .replace(
+      /"/g,
+      "&quot;"
+    )
+
+    .replace(
+      /'/g,
+      "&#039;"
+    );
+
+}
+
+
+/* =====================================================
+   CATEGORIAS
+===================================================== */
+
+function formatarCategoria(
+  categoria
+) {
+
+  const mapa = {
+
+    camiseta:
+      "Camiseta",
+
+    camisa:
+      "Camisa",
+
+    calca:
+      "Calça",
+
+    bermuda:
+      "Bermuda",
+
+    short:
+      "Short",
+
+    tenis:
+      "Tênis",
+
+    sapato:
+      "Sapato",
+
+    jaqueta:
+      "Jaqueta",
+
+    acessorio:
+      "Acessório",
+
+    outro:
+      "Outro"
+
+  };
+
+
+  return (
+    mapa[categoria] ||
+    categoria ||
+    "Outro"
+  );
+
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+let toastTimer;
+
+
+function mostrarToast(
+  mensagem
+) {
+
+  const toast =
+    document.getElementById(
+      "toast"
+    );
+
+
+  toast.textContent =
+    mensagem;
+
+
+  toast.classList.add(
+    "show"
+  );
+
+
+  clearTimeout(
+    toastTimer
+  );
+
+
+  toastTimer =
+    setTimeout(
+      function() {
+
+        toast.classList.remove(
+          "show"
         );
 
+      },
+      2800
+    );
 
-      toast.textContent =
-        mensagem;
-
-
-      toast.classList.add(
-        "show"
-      );
+}
 
 
-      clearTimeout(
-        toastTimer
-      );
+/* =====================================================
+   SERVICE WORKER / PWA
+===================================================== */
 
+if (
+  "serviceWorker"
+  in navigator
+) {
 
-      toastTimer =
-        setTimeout(
-          function() {
+  window.addEventListener(
+    "load",
+    function() {
 
-            toast.classList.remove(
-              "show"
+      navigator.serviceWorker
+        .register(
+          "./sw.js"
+        )
+
+        .then(
+          function(registration) {
+
+            console.log(
+              "Service Worker registrado:",
+              registration.scope
             );
 
-          },
-          2800
+          }
+        )
+
+        .catch(
+          function(error) {
+
+            console.error(
+              "Erro ao registrar Service Worker:",
+              error
+            );
+
+          }
         );
 
     }
+  );
 
-  </script>
-
-  <script>
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", function () {
-    navigator.serviceWorker
-      .register("./sw.js")
-      .then(function (registration) {
-        console.log("Service Worker registrado:", registration.scope);
-      })
-      .catch(function (error) {
-        console.error("Erro ao registrar Service Worker:", error);
-      });
-  });
 }
+
 </script>
+
 
 </body>
 </html>
